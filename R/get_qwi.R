@@ -10,7 +10,7 @@
 #'@export
 
 get_qwi <- function(years,
-                    variables,
+                    variables = NULL,
                     quarters = c(1,2,3,4),
                     industries,
                     states,

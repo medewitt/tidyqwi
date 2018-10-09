@@ -8,7 +8,17 @@ get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
   industries = "all", states, apikey)
 }
 \arguments{
-\item{year}{a year}
+\item{variables}{the variables you wish to fetch. Default is all.}
+
+\item{quarters}{The quarters to fetch (e.g. c(1,2,3,4)) Default is all}
+
+\item{industries}{Industries to fetch. Default is all level 2}
+
+\item{states}{state fips code to fetch}
+
+\item{apikey}{your US Census API Key}
+
+\item{year}{years to fetch (e.g. 2010, or c(2010, 2011))}
 }
 \description{
 get_twi

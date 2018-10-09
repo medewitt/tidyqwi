@@ -1,6 +1,10 @@
 #'@title get_twi
-#'@param year a year
-#'
+#'@param year years to fetch (e.g. 2010, or c(2010, 2011))
+#'@param variables the variables you wish to fetch. Default is all.
+#'@param quarters The quarters to fetch (e.g. c(1,2,3,4)) Default is all
+#'@param industries Industries to fetch. Default is all level 2
+#'@param states state fips code to fetch
+#'@param apikey your US Census API Key
 #'
 #'@import jsonlite
 #'@import dplyr
@@ -118,5 +122,21 @@ get_qwi <- function(years,
   # Turn the list to a single data frame
   out_data <- dplyr::bind_rows(collector)
   close(pb)
-  return(out_data)
+
+  desired_labels <- qwi_var_names[match(names(out_data), qwi_var_names$name),]
+  desired_labels$`predicate type`[is.na(desired_labels$`predicate type`)] <- "string"
+  desired_labels <- desired_labels[desired_labels$`predicate type`=="int",]
+
+  out_data<- dplyr::mutate_at(out_data, vars(desired_labels$name), .funs = as.numeric)
+
+  desired_labels <- qwi_var_names$label[match(names(out_data), qwi_var_names$name)]
+
+  Hmisc::label(out_data, self=FALSE) <- desired_labels
+  out_data <- out_data %>%
+    rename(MSA = `metropolitan statistical area/micropolitan statistical area`)
+  Hmisc::label(out_data[["state"]]) <- "State FIPS"
+  Hmisc::label(out_data[["MSA"]]) <- "metropolitan statistical area/micropolitan statistical area"
+
+
+    return(out_data)
 }

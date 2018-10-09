@@ -6,13 +6,14 @@
 #'@import dplyr
 #'@import httr
 #'@import glue
+#'@import utils
 
 #'@export
 
 get_qwi <- function(years,
                     variables = NULL,
                     quarters = c(1,2,3,4),
-                    industries,
+                    industries = "all",
                     states,
                     apikey) {
   # if(!any(quarters, c(1,2,3,4))){
@@ -39,7 +40,18 @@ get_qwi <- function(years,
   #   The QWI data are only available after 1990."))
   # }
   if(is.null(variables)){
-    variables <- paste(qwi_var_names$name, collapse = ",")
+    variables <- paste("Emp", "sEmp", "EmpEnd" ,"sEmpEnd", "EmpS",
+                          "sEmpS", "EmpTotal", "sEmpTotal", "EmpSpv",
+                          "sEmpSpv", "HirA", "sHirA", "HirN", "sHirN",
+                          "HirR", "sHirR","Sep","sSep","HirAEnd", "sHirAEnd",
+                          "SepBeg","sSepBeg","HirAEndRepl", "sHirAEndRepl",
+                          "HirAEndR", "sHirAEndR", "SepBegR", "sSepBegR",
+                          "HirAEndRepl", "sHirAEndRepl" , "SepS", "sSepS",
+                          "SepSnx", "sSepSnx", "TurnOvrS", "sTurnOvrS",sep=",")
+  }
+
+  if(industries == "all"){
+    industries <- industry_labels$industry[industry_labels$ind_level=="2"]
   }
   year_collapsed <- paste(years, collapse = ",")
   quarter_collapsed <- paste(quarters, collapse = ",")
@@ -48,10 +60,11 @@ get_qwi <- function(years,
 
   collector <- list()
   collect_industry <- dplyr::data_frame()
+  pb <- utils::txtProgressBar(min = 0, max = length(states), style = 3)
   for(j in seq_along(states)) {
     state <- states[[j]]
 
-    utils::txtProgressBar(0, j)
+    setTxtProgressBar(pb, j)
 
     for (i in seq_along(industries)) {
       industry <- industries[[i]]
@@ -81,6 +94,8 @@ get_qwi <- function(years,
       if(!call$status_code %in% c(200, 202)){
         # 500 means that message failed If not 500 then there was an OK
         next(i)
+        print(call$status_code)
+        print(url)
 
       } else{
         # Keep going if there isn't an error
@@ -102,6 +117,6 @@ get_qwi <- function(years,
 
   # Turn the list to a single data frame
   out_data <- dplyr::bind_rows(collector)
-
-  out_data
+  close(pb)
+  return(out_data)
 }

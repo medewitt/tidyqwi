@@ -4,8 +4,8 @@
 \alias{get_qwi}
 \title{get_twi}
 \usage{
-get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4), industries,
-  states, apikey)
+get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
+  industries = "all", states, apikey)
 }
 \arguments{
 \item{year}{a year}

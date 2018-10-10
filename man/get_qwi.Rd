@@ -5,20 +5,23 @@
 \title{get_twi}
 \usage{
 get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
-  industries = "all", states, apikey)
+  industry_level = 2, states, endpoint = "sa", all_groups = TRUE,
+  owner_code = TRUE, geography = "cbsa", seasonadj = "U", apikey)
 }
 \arguments{
 \item{variables}{the variables you wish to fetch. Default is all.}
 
 \item{quarters}{The quarters to fetch (e.g. c(1,2,3,4)) Default is all}
 
-\item{industries}{Industries to fetch. Default is all level 2}
-
 \item{states}{state fips code to fetch}
+
+\item{endpoint}{US Census endpoint designation. One of "SA" for Sex * Age, "SE" for Sex by Education and "rh" for Race/Ethnicity}
 
 \item{apikey}{your US Census API Key}
 
 \item{year}{years to fetch (e.g. 2010, or c(2010, 2011))}
+
+\item{industries}{Industries to fetch. Default is all level 2}
 }
 \description{
 get_twi

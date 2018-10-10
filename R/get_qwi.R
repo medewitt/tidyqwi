@@ -4,6 +4,7 @@
 #'@param quarters The quarters to fetch (e.g. c(1,2,3,4)) Default is all
 #'@param industries Industries to fetch. Default is all level 2
 #'@param states state fips code to fetch
+#'@param endpoint US Census endpoint designation. One of "SA" for Sex * Age, "SE" for Sex by Education and "rh" for Race/Ethnicity
 #'@param apikey your US Census API Key
 #'
 #'@import jsonlite
@@ -17,8 +18,13 @@
 get_qwi <- function(years,
                     variables = NULL,
                     quarters = c(1,2,3,4),
-                    industries = "all",
+                    industry_level = 2,
                     states,
+                    endpoint = "sa",
+                    all_groups = TRUE,
+                    owner_code = TRUE,
+                    geography = "cbsa",
+                    seasonadj = "U",
                     apikey) {
   # if(!any(quarters, c(1,2,3,4))){
   #   stop(glue("You have specified {quarters}.
@@ -54,8 +60,10 @@ get_qwi <- function(years,
                           "SepSnx", "sSepSnx", "TurnOvrS", "sTurnOvrS",sep=",")
   }
 
-  if(industries == "all"){
-    industries <- industry_labels$industry[industry_labels$ind_level=="2"]
+  if(industry_level %in% c("A", 2, 3, 4)){
+    industries <- industry_labels$industry[industry_labels$ind_level==industry_level]
+  } else{
+    stop("You have not specified a valid NAICS Number Digit in `industry_level` (e.g. A, 2, 3, 4)")
   }
   year_collapsed <- paste(years, collapse = ",")
   quarter_collapsed <- paste(quarters, collapse = ",")
@@ -65,6 +73,48 @@ get_qwi <- function(years,
   collector <- list()
   collect_industry <- dplyr::data_frame()
   pb <- utils::txtProgressBar(min = 0, max = length(states), style = 3)
+
+  endpoint_to_retrieve <- switch( endpoint,
+                                  sa = "sa",
+                                  se = "se",
+                                  rh = "rh")
+
+  if( all_groups == TRUE){
+    cross_tab <- switch( endpoint,
+                         sa = "&agegrp=A00&sex=0",
+                         se = "&sex=0&education=E0",
+                         rg = "&race=A0&=ethnicity=A0")
+  } else {
+    cross_tab <- switch( endpoint,
+                         sa = "&agegrp=A00&agegrp=A01&agegrp=A02&agegrp=A03&agegrp=A04&agegrp=A05&agegrp=A06&agegrp=A07&agegrp=A08&sex=0&sex=1&sex=2",
+                         se = "&sex=0&sex=1&sex=2&education=E0&education=E1&education=E2&education=E3&education=E4&education=E5",
+                         rg = "&race=A0&race=A1&race=A2&race=A3&race=A4&race=A5&race=A6&race=A7&=ethnicity=A0&=ethnicity=A1&=ethnicity=A2")
+  }
+
+  if( owner_code == TRUE){
+    owner_code <- "&ownercode=A00"
+  } else {
+    owner_code <- switch( owner_code,
+                          A01 = "&ownercode=A00&ownercode=A01",
+                          A02 = "&ownercode=A00&ownercode=A02")
+  }
+
+  if(!geography %in% c("cbsa", "county")){
+    stop("Please enter a county or cbsa in the `geography` field")
+  }
+
+  if(geography == "cbsa"){
+    geography <- "metropolitan+statistical+area/micropolitan+statistical+area"
+  } else{
+    geography <- geography
+  }
+
+  if(!seasonadj %in%c("S", "U")){
+    stop("Please specify a valid seasonal adjustment parameter of `S` or `U`")
+  }
+
+
+
   for(j in seq_along(states)) {
     state <- states[[j]]
 
@@ -76,15 +126,15 @@ get_qwi <- function(years,
 
       url <-
         paste(
-          "https://api.census.gov/data/timeseries/qwi/sa?get=",
+          "https://api.census.gov/data/timeseries/qwi/",endpoint_to_retrieve,"?get=",
           variables,
-          "&for=metropolitan+statistical+area/micropolitan+statistical+area:*&in=state:",
+          "&for=",geography,":*&in=state:",
           state,
           "&year=",year_collapsed,
           "&quarter=",quarter_collapsed,
-          "&agegrp=A00&agegrp=A01&agegrp=A02&agegrp=A03&agegrp=A04&agegrp=A05&agegrp=A06&agegrp=A07&agegrp=A08",
-          "&ownercode=A00",
-          "&seasonadj=U",
+          cross_tab,
+          owner_code,
+          "&seasonadj=",seasonadj,
           "&industry=",
           industry,
           "&key=",
@@ -132,10 +182,10 @@ get_qwi <- function(years,
   desired_labels <- qwi_var_names$label[match(names(out_data), qwi_var_names$name)]
 
   Hmisc::label(out_data, self=FALSE) <- desired_labels
-  out_data <- out_data %>%
-    rename(MSA = `metropolitan statistical area/micropolitan statistical area`)
-  Hmisc::label(out_data[["state"]]) <- "State FIPS"
-  Hmisc::label(out_data[["MSA"]]) <- "metropolitan statistical area/micropolitan statistical area"
+  #out_data <- out_data %>%
+  #  rename(MSA = `metropolitan statistical area/micropolitan statistical area`)
+  #Hmisc::label(out_data[["state"]]) <- "State FIPS"
+  #Hmisc::label(out_data[["MSA"]]) <- "metropolitan statistical area/micropolitan statistical area"
 
 
     return(out_data)

@@ -11,11 +11,12 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-source("R/census.R")
 ```
 # tidyqwi
 
-The goal of tidyqwi is to make accessing the US Census Bureau's Quarterly Workforce Indicators Easier in a tidy format. This is a work in progress!
+The goal of tidyqwi is to make accessing the US Census Bureau's _Quarterly Workforce Indicators_ easier in a tidy format. This package allows a user to specify the years and states of interest as well as some of the additional parameters (desired cross tabs, MSA vs county level data, firm size, etc) and submit them to the US Census API. This package then stays within the US Census guidelines for API submission for this data and returns a combined tidy dataframe for future analysis.
+
+This is a work in progress!
 
 ## Installation
 
@@ -28,7 +29,7 @@ After installation you can load and retrieve the desired data!
 ```{r}
 library(tidyqwi)
 
-output <- get_qwi(years = "2010", states = "37", apikey = censuskey)
+output <- get_qwi(years = "2010", states = "37", apikey = census_key)
 
 ```
 

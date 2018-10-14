@@ -37,29 +37,36 @@ get_qwi <- function(years,
                     geography = "cbsa",
                     seasonadj = "U",
                     apikey) {
-  # if(!any(quarters, c(1,2,3,4))){
-  #   stop(glue("You have specified {quarters}.
-  #             Please specify 1, 2, 3, or 4
-  #             e.g. quarters = c(1,2)"))
-  # }
-  # if(!any(industries, industry_labels$industry)){
-  #   stop(glue("Please specify a valid industry label.
-  #             Check the `industry_labels` table for details."))
-  # }
-  # if(!any(states,state_info$state_fips)){
-  #   stop(glue("{states} is not a valids fips code.
-  #             Please check the state_info table for details
-  #             on valid fip codes."))
-  # }
-  #
+  # Ensure quarters are properly supplied
+  if(!all(quarters %in% c(1,2,3,4))){
+    stop(glue("You have specified {quarters}.
+              Please specify 1, 2, 3, or 4
+              e.g. quarters = c(1,2)"))
+  }
+
+  # Ensure all industry specications are properly specified
+  if(!all(industries %in% industry_labels$industry)){
+    stop(glue("Please specify a valid industry label.
+              Check the `industry_labels` table for details."))
+  }
+
+  # Verify all states are properly specified
+  if(!all(states %in% state_info$state_fips)){
+    stop(glue("{states} contains an invalid fips code.
+              Please check the state_info table for details
+              on valid fips codes."))
+  }
+
+  # Check that API Key Exists
   if(!exists("apikey")){
     stop("Please specifiy a valid API Key.")
   }
-  #
-  # if(min(years) < 1990){
-  #   stop(glue("{min(year)} is before 1990.
-  #   The QWI data are only available after 1990."))
-  # }
+  # Add a check to ensure that data called is available
+  if(min(years) < 1990){
+    stop(glue("{min(year)} is before 1990.
+    The QWI data are only available after 1990."))
+  }
+
   if(is.null(variables)){
     variables <- paste("Emp", "sEmp", "EmpEnd" ,"sEmpEnd", "EmpS",
                           "sEmpS", "EmpTotal", "sEmpTotal", "EmpSpv",

@@ -8,7 +8,7 @@
 \describe{
   \item{name}{state name}
   \item{state_fips}{state fips code}
-  \item{state_abbreviation} {state abreviation}
+  \item{state_abbreviation}{state abbreviation}
    ...
 }}
 \source{

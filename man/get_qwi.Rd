@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_qwi.R
 \name{get_qwi}
 \alias{get_qwi}
-\title{get_twi}
+\title{get_qwi}
 \usage{
 get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
   industry_level = 2, states, endpoint = "sa", all_groups = TRUE,
@@ -17,12 +17,29 @@ get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
 
 \item{endpoint}{US Census endpoint designation. One of "SA" for Sex * Age, "SE" for Sex by Education and "rh" for Race/Ethnicity}
 
+\item{owner_code}{firm owner code}
+
+\item{geography}{the US Census geography granuality (one of cbsa or county)}
+
+\item{seasonadj}{seasonal adjustment factor (one of "U" or "S")}
+
 \item{apikey}{your US Census API Key}
 
 \item{year}{years to fetch (e.g. 2010, or c(2010, 2011))}
 
 \item{industries}{Industries to fetch. Default is all level 2}
 }
+\value{
+the desired data from the US Census's Quaterly Workforce API
+}
 \description{
-get_twi
+The purpose of this function is to retrive firm information from the
+   US Census' Quarterly Workforce Indicator API. These data can be retrieved with by
+   specifying the states, the quarters, the years, and additional detail. This function can
+   accept multiple states, years and quarters. This makes the data retrieval easier and stay
+   inside of the US Census' limits on the API.
+}
+\examples{
+get_qwi(year = c(2010, 2011), states = c("01", "37"), apikey = "SECRETKEY")
+get_qwi(year = c(2010, 2011), industry_level = 3, states = c("01", "37"), apikey = "SECRETKEY")
 }

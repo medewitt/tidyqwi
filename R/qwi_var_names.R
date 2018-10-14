@@ -4,13 +4,13 @@
 #' \describe{
 #'   \item{name}{state name}
 #'   \item{label}{state fips code}
-#'   \item{concept} {state abreviation}
-#'   \item{required}
-#'   \item{attributes}
-#'   \item{limit}
-#'   \item{predicate type}
-#'   \item{group}
-#'   \item{values}
+#'   \item{concept}{state abbreviation}
+#'   \item{required}{requirements}
+#'   \item{attributes}{details of attributes}
+#'   \item{limit}{limit}
+#'   \item{predicate type}{predicate type}
+#'   \item{group}{group level}
+#'   \item{values}{values}
 #'    ...
 #' }
 #' @source \url{https://api.census.gov/data/timeseries/qwi/se/variables.html}

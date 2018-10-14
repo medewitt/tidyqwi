@@ -4,7 +4,7 @@
 #' \describe{
 #'   \item{industry}{Industry Numeric Code}
 #'   \item{label}{Description of Industry Level}
-#'   \item{ind_level} {Industry Level}
+#'   \item{ind_level}{Industry Level}
 #'    ...
 #' }
 #' @source \url{https://lehd.ces.census.gov/data/schema/latest/label_industry.csv}

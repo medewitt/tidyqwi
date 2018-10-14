@@ -25,6 +25,7 @@ Imports:
   jsonlite,
   Hmisc
 License: MIT + file LICENSE
+BugReports: https://github.com/medewitt/tidyqwi/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0

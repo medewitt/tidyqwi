@@ -52,9 +52,9 @@ get_qwi <- function(years,
   #             on valid fip codes."))
   # }
   #
-  # if(is.null(apikey)){
-  #   stop("Please specifiy a valid API Key.")
-  # }
+  if(!exists("apikey")){
+    stop("Please specifiy a valid API Key.")
+  }
   #
   # if(min(years) < 1990){
   #   stop(glue("{min(year)} is before 1990.

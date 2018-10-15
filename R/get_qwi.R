@@ -27,7 +27,6 @@
 #'@import dplyr
 #'@import httr
 #'@import utils
-#'@importFrom glue glue
 #'@export
 
 get_qwi <- function(years,

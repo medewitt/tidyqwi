@@ -43,6 +43,8 @@ The purpose of this function is to retrive firm information from the
    inside of the US Census' limits on the API.
 }
 \examples{
+\dontrun{
 get_qwi(year = c(2010, 2011), states = c("01", "37"), apikey = "SECRETKEY")
 get_qwi(year = c(2010, 2011), industry_level = 3, states = c("01", "37"), apikey = "SECRETKEY")
+}
 }

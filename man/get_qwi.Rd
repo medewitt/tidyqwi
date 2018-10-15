@@ -10,13 +10,19 @@ get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
   apikey = NULL, quiet = FALSE)
 }
 \arguments{
+\item{years}{years to fetch (e.g. 2010, or c(2010, 2011))}
+
 \item{variables}{the variables you wish to fetch. Default is all.}
 
 \item{quarters}{The quarters to fetch (e.g. c(1,2,3,4)) Default is all}
 
+\item{industry_level}{Industries to fetch. Default is all level 2}
+
 \item{states}{state fips code to fetch}
 
 \item{endpoint}{US Census endpoint designation. One of "SA" for Sex * Age, "SE" for Sex by Education and "rh" for Race/Ethnicity}
+
+\item{all_groups}{default to true}
 
 \item{owner_code}{firm owner code}
 
@@ -27,10 +33,6 @@ get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
 \item{apikey}{your US Census API Key}
 
 \item{quiet}{specify if progress is to be printed (default = FALSE)}
-
-\item{year}{years to fetch (e.g. 2010, or c(2010, 2011))}
-
-\item{industries}{Industries to fetch. Default is all level 2}
 }
 \value{
 the desired data from the US Census's Quaterly Workforce API

@@ -4,17 +4,19 @@
 #'    specifying the states, the quarters, the years, and additional detail. This function can
 #'    accept multiple states, years and quarters. This makes the data retrieval easier and stay
 #'    inside of the US Census' limits on the API.
-#'@param year years to fetch (e.g. 2010, or c(2010, 2011))
+#'@param years years to fetch (e.g. 2010, or c(2010, 2011))
 #'@param variables the variables you wish to fetch. Default is all.
 #'@param quarters The quarters to fetch (e.g. c(1,2,3,4)) Default is all
-#'@param industries Industries to fetch. Default is all level 2
+#'@param industry_level Industries to fetch. Default is all level 2
 #'@param states state fips code to fetch
 #'@param endpoint US Census endpoint designation. One of "SA" for Sex * Age, "SE" for Sex by Education and "rh" for Race/Ethnicity
-#'@param apikey your US Census API Key
+#'@param all_groups default to true
 #'@param owner_code firm owner code
 #'@param geography the US Census geography granuality (one of cbsa or county)
-#'@param quiet specify if progress is to be printed (default = FALSE)
 #'@param seasonadj seasonal adjustment factor (one of "U" or "S")
+#'@param apikey your US Census API Key
+#'@param quiet specify if progress is to be printed (default = FALSE)
+#'
 #'@return the desired data from the US Census's Quaterly Workforce API
 #'@examples
 #'\dontrun{
@@ -25,6 +27,7 @@
 #'@import dplyr
 #'@import httr
 #'@import utils
+#'@importFrom glue glue
 #'@export
 
 get_qwi <- function(years,

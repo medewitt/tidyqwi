@@ -41,6 +41,7 @@ get_qwi <- function(years,
                     seasonadj = "U",
                     apikey = NULL,
                     quiet = FALSE) {
+
   # Ensure quarters are properly supplied
   if(!all(quarters %in% c(1,2,3,4))){
     stop(sprintf("You have specified %s.\nPlease specify 1, 2, 3, or 4 \ne.g. quarters = c(1,2)", quarters))

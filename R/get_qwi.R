@@ -17,13 +17,14 @@
 #'@param seasonadj seasonal adjustment factor (one of "U" or "S")
 #'@return the desired data from the US Census's Quaterly Workforce API
 #'@examples
+#'\dontrun{
 #'get_qwi(year = c(2010, 2011), states = c("01", "37"), apikey = "SECRETKEY")
 #'get_qwi(year = c(2010, 2011), industry_level = 3, states = c("01", "37"), apikey = "SECRETKEY")
+#'}
 #'@import jsonlite
 #'@import dplyr
 #'@import httr
 #'@import utils
-
 #'@export
 
 get_qwi <- function(years,

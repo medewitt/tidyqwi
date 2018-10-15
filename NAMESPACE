@@ -2,6 +2,7 @@
 
 export(get_qwi)
 import(dplyr)
+import(glue)
 import(httr)
 import(jsonlite)
 import(utils)

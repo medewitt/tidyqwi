@@ -24,6 +24,7 @@
 #'get_qwi(year = c(2010, 2011), industry_level = 3, states = c("01", "37"), apikey = "SECRETKEY")
 #'}
 #'@import jsonlite
+#'@import glue
 #'@import dplyr
 #'@import httr
 #'@import utils

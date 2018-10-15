@@ -22,7 +22,6 @@
 #'@import jsonlite
 #'@import dplyr
 #'@import httr
-#'@import glue
 #'@import utils
 
 #'@export
@@ -41,20 +40,20 @@ get_qwi <- function(years,
                     quiet = FALSE) {
   # Ensure quarters are properly supplied
   if(!all(quarters %in% c(1,2,3,4))){
-    stop(glue("You have specified {quarters}.
+    stop(glue::glue("You have specified {quarters}.
               Please specify 1, 2, 3, or 4
               e.g. quarters = c(1,2)"))
   }
 
   # Ensure all industry specications are properly specified
   if(!all(industry_level %in% industry_labels$ind_level)){
-    stop(glue("Please specify a valid industry label.
+    stop(glue::glue("Please specify a valid industry label.
               Check the `industry_labels` table for details."))
   }
 
   # Verify all states are properly specified
   if(!all(states %in% state_info$state_fips)){
-    stop(glue("{states} contains an invalid fips code.
+    stop(glue::glue("{states} contains an invalid fips code.
               Please check the state_info table for details
               on valid fips codes."))
   }
@@ -65,7 +64,7 @@ get_qwi <- function(years,
   }
   # Add a check to ensure that data called is available
   if(min(years) < 1990){
-    stop(glue("{min(years)} is before 1990.
+    stop(glue::glue("{min(years)} is before 1990.
     The QWI data are only available after 1990."))
   }
 

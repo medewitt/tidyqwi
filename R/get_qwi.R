@@ -24,7 +24,6 @@
 #'get_qwi(year = c(2010, 2011), industry_level = 3, states = c("01", "37"), apikey = "SECRETKEY")
 #'}
 #'@import jsonlite
-#'@import glue
 #'@import dplyr
 #'@import httr
 #'@import utils
@@ -44,22 +43,17 @@ get_qwi <- function(years,
                     quiet = FALSE) {
   # Ensure quarters are properly supplied
   if(!all(quarters %in% c(1,2,3,4))){
-    stop(glue::glue("You have specified {quarters}.
-              Please specify 1, 2, 3, or 4
-              e.g. quarters = c(1,2)"))
+    stop(sprintf("You have specified %s.\nPlease specify 1, 2, 3, or 4 \ne.g. quarters = c(1,2)", quarters))
   }
 
   # Ensure all industry specications are properly specified
   if(!all(industry_level %in% industry_labels$ind_level)){
-    stop(glue::glue("Please specify a valid industry label.
-              Check the `industry_labels` table for details."))
+    stop(sprintf("Please specify a valid industry label.\nCheck the `industry_labels` table for details."))
   }
 
   # Verify all states are properly specified
   if(!all(states %in% state_info$state_fips)){
-    stop(glue::glue("{states} contains an invalid fips code.
-              Please check the state_info table for details
-              on valid fips codes."))
+    stop(sprintf("%s contains an invalid fips code.\nPlease check the state_info table for details\non valid fips codes.",states))
   }
 
   # Check that API Key Exists
@@ -68,8 +62,7 @@ get_qwi <- function(years,
   }
   # Add a check to ensure that data called is available
   if(min(years) < 1990){
-    stop(glue::glue("{min(years)} is before 1990.
-    The QWI data are only available after 1990."))
+    stop(sprintf("%s is before 1990.\nThe QWI data are only available after 1990.",min(years)))
   }
 
   if(is.null(variables)){

@@ -14,6 +14,8 @@ knitr::opts_chunk$set(
 ```
 [![Travis build status](https://travis-ci.org/medewitt/tidyqwi.svg?branch=master)](https://travis-ci.org/medewitt/tidyqwi)
 
+[![Coverage status](https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg)](https://codecov.io/github/medewitt/tidyqwi?branch=master)
+
 # tidyqwi
 
 The goal of tidyqwi is to make accessing the US Census Bureau's _Quarterly Workforce Indicators_ easier in a tidy format. This package allows a user to specify the years and states of interest as well as some of the additional parameters (desired cross tabs, MSA vs county level data, firm size, etc) and submit them to the US Census API. This package then stays within the US Census guidelines for API submission for this data and returns a combined tidy dataframe for future analysis.
@@ -47,3 +49,4 @@ And there are labels added
 Hmisc::describe(output)
 ```
 
+Please note that the 'tidyqwi' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

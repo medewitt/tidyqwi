@@ -13,6 +13,7 @@
 #'@param apikey your US Census API Key
 #'@param owner_code firm owner code
 #'@param geography the US Census geography granuality (one of cbsa or county)
+#'@param quiet specify if progress is to be printed (default = FALSE)
 #'@param seasonadj seasonal adjustment factor (one of "U" or "S")
 #'@return the desired data from the US Census's Quaterly Workforce API
 #'@examples
@@ -36,7 +37,8 @@ get_qwi <- function(years,
                     owner_code = TRUE,
                     geography = "cbsa",
                     seasonadj = "U",
-                    apikey) {
+                    apikey = NULL,
+                    quiet = FALSE) {
   # Ensure quarters are properly supplied
   if(!all(quarters %in% c(1,2,3,4))){
     stop(glue("You have specified {quarters}.
@@ -45,7 +47,7 @@ get_qwi <- function(years,
   }
 
   # Ensure all industry specications are properly specified
-  if(!all(industries %in% industry_labels$industry)){
+  if(!all(industry_level %in% industry_labels$ind_level)){
     stop(glue("Please specify a valid industry label.
               Check the `industry_labels` table for details."))
   }
@@ -58,12 +60,12 @@ get_qwi <- function(years,
   }
 
   # Check that API Key Exists
-  if(!exists("apikey")){
+  if(is.null(apikey)){
     stop("Please specifiy a valid API Key.")
   }
   # Add a check to ensure that data called is available
   if(min(years) < 1990){
-    stop(glue("{min(year)} is before 1990.
+    stop(glue("{min(years)} is before 1990.
     The QWI data are only available after 1990."))
   }
 
@@ -136,11 +138,16 @@ get_qwi <- function(years,
   for(j in seq_along(states)) {
     state <- states[[j]]
 
-    setTxtProgressBar(pb, j)
+    setTxtProgressBar(pb, length(industries))
 
     for (i in seq_along(industries)) {
       industry <- industries[[i]]
-      #print(industries[[i]])
+
+      if(!quiet){
+        cat(state)
+        setTxtProgressBar(pb, i)
+      }
+
 
       url <-
         paste(

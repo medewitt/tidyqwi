@@ -1,0 +1,5 @@
+^codecov\.yml$
+^CODE_OF_CONDUCT\.md$
+^\.travis\.yml$
+^.*\.Rproj$
+^\.Rproj\.user$

@@ -27,6 +27,7 @@
 #'@import dplyr
 #'@import httr
 #'@import utils
+#'@import xml2
 #'@export
 
 get_qwi <- function(years,
@@ -85,11 +86,10 @@ get_qwi <- function(years,
   year_collapsed <- paste(years, collapse = ",")
   quarter_collapsed <- paste(quarters, collapse = ",")
 
-  # Initialise some empty "collectors" which is where we will store our intermediate data.
 
-  collector <- list()
-  collect_industry <- dplyr::data_frame()
-  pb <- utils::txtProgressBar(min = 0, max = length(states), style = 3)
+  if(!endpoint %in% c("sa", "se", "rh")){
+    stop(sprintf("You have not specified a valid endpoint one of `sa``, `se``, or `rh`", endpoint))
+  }
 
   endpoint_to_retrieve <- switch( endpoint,
                                   sa = "sa",
@@ -130,12 +130,21 @@ get_qwi <- function(years,
     stop("Please specify a valid seasonal adjustment parameter of `S` or `U`")
   }
 
+  # Initialise some empty "collectors" which is where we will store our intermediate data.
 
+  collector <- list()
+  collect_industry <- dplyr::data_frame()
+
+  if(!quiet){
+    pb <- utils::txtProgressBar(min = 0, max = length(states), style = 3)
+  }
 
   for(j in seq_along(states)) {
     state <- states[[j]]
 
-    setTxtProgressBar(pb, length(industries))
+    if(!quiet){
+      setTxtProgressBar(pb, length(industries))
+    }
 
     for (i in seq_along(industries)) {
       industry <- industries[[i]]
@@ -166,12 +175,13 @@ get_qwi <- function(years,
 
 
       call <- httr::GET(url)
-      #print(call$status_code)
-      if(!call$status_code %in% c(200, 202)){
-        # 500 means that message failed If not 500 then there was an OK
+
+      #IF 200 not returned or known error message returned:
+
+      if(!call$status_code %in% c(200)){
+        # IF 200 was not returned then there was an error.
+
         next(i)
-        print(call$status_code)
-        print(url)
 
       } else{
         # Keep going if there isn't an error
@@ -193,7 +203,9 @@ get_qwi <- function(years,
 
   # Turn the list to a single data frame
   out_data <- dplyr::bind_rows(collector)
-  close(pb)
+  if(!quiet){
+    close(pb)
+  }
 
   desired_labels <- qwi_var_names[match(names(out_data), qwi_var_names$name),]
   desired_labels$`predicate type`[is.na(desired_labels$`predicate type`)] <- "string"

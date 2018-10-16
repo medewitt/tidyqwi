@@ -15,6 +15,22 @@ test_that("Catch for years prior to data availability works", {
                "1980 is before 1990.\nThe QWI data are only available after 1990.")
 })
 
+test_that("Catch for endpoint checking", {
+  expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "MYKEY", endpoint = "RR"),
+               "You have not specified a valid endpoint one of `sa``, `se``, or `rh`")
+})
+
+test_that("Catch for geography", {
+  expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "MYKEY", geography = "country"),
+               "Please enter a county or cbsa in the `geography` field")
+})
+
+test_that("Catch for geography", {
+  expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "MYKEY", seasonadj = "r"),
+               "Please specify a valid seasonal adjustment parameter of `S` or `U`")
+})
+
+
 test_that("All the data frames have been sucessfully loaded",
           {
             expect_equal(nrow(state_info), 51)

@@ -24,10 +24,11 @@ Description: The purpose of this package is to access the
 Depends:
   R (>= 3.0)
 Imports:
-  dplyr,
-  httr,
-  jsonlite,
-  Hmisc
+    dplyr,
+    httr,
+    jsonlite,
+    Hmisc,
+    magrittr
 License: MIT + file LICENSE
 BugReports: https://github.com/medewitt/tidyqwi/issues
 Encoding: UTF-8

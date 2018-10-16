@@ -27,7 +27,6 @@
 #'@import dplyr
 #'@import httr
 #'@import utils
-#'@import xml2
 #'@export
 
 get_qwi <- function(years,
@@ -173,13 +172,16 @@ get_qwi <- function(years,
           sep = ""
         )
 
-
       call <- httr::GET(url)
 
       #IF 200 not returned or known error message returned:
 
-      if(!call$status_code %in% c(200)){
+      if(!call$status_code %in% c(200)|grepl(pattern = "valid key must", check_census_api_call(call))){
         # IF 200 was not returned then there was an error.
+
+        if(grepl(pattern = "valid key must", check_census_api_call(call))){
+          stop(check_census_api_call(call))
+        }
 
         next(i)
 

@@ -11,7 +11,11 @@ Authors@R: c(
            family = "Ahmadiani",
            role = c("aut"),
            email = "ahmadim@wfu.edu",
-           comment = c(ORCID = "0000-0002-1269-5685"))
+           comment = c(ORCID = "0000-0002-1269-5685")),    
+    person(given = "Adam",
+           family = "Hyde",
+           role = c("aut"),
+           email = "hydeas@wfu.edu")
            )
 Maintainer: Michael DeWitt <dewittme@wfu.edu>
 Description: The purpose of this package is to access the 

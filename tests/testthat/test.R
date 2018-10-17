@@ -44,4 +44,7 @@ test_that("All the data frames have been sucessfully loaded",
             expect_equal(nrow(qwi_var_names), 86)
 
           })
-
+test_that("fips code converter works",
+          {
+            expect_equal(converted_fips("nc    "), "37")
+          })

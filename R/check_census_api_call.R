@@ -11,5 +11,5 @@ check_census_api_call <- function(call){
     xml2::xml_find_all("body") %>%
     xml2::xml_text() %>%
     gsub(pattern = "\\s{2}", replacement = "") %>%
-    gsub(pattern = "^\\s", replacement = "",)
+    gsub(pattern = "^\\s", replacement = "")
 }

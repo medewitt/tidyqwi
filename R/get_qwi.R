@@ -176,7 +176,9 @@ get_qwi <- function(years,
 
       #IF 200 not returned or known error message returned:
 
-      if(!call$status_code %in% c(200)|grepl(pattern = "valid key must", check_census_api_call(call))){
+      #print(url)
+      if(!call$status_code %in% c(200)|
+         show_condition(check_census_api_call(call))!="error"){
         # IF 200 was not returned then there was an error.
 
         if(grepl(pattern = "valid key must", check_census_api_call(call))){
@@ -213,7 +215,7 @@ get_qwi <- function(years,
   desired_labels$`predicate type`[is.na(desired_labels$`predicate type`)] <- "string"
   desired_labels <- desired_labels[desired_labels$`predicate type`=="int",]
 
-  out_data<- dplyr::mutate_at(out_data, vars(desired_labels$name), .funs = as.numeric)
+  out_data<- dplyr::mutate_at(out_data, dplyr::vars(desired_labels$name), .funs = as.numeric)
 
   desired_labels <- qwi_var_names$label[match(names(out_data), qwi_var_names$name)]
 
@@ -223,6 +225,15 @@ get_qwi <- function(years,
   #Hmisc::label(out_data[["state"]]) <- "State FIPS"
   #Hmisc::label(out_data[["MSA"]]) <- "metropolitan statistical area/micropolitan statistical area"
 
+  # Add a datetime column for the quarter. This will help with time series
+  # manipulation down the line
+  out_data <- out_data %>%
+    dplyr::mutate(year_time =  dplyr::case_when(
+      quarter==1~as.Date(paste(year, "1","1", sep = "-")),
+      quarter==2~as.Date(paste(year, "3","1", sep = "-")),
+      quarter==3~as.Date(paste(year, "6","1", sep = "-")),
+      quarter==4~as.Date(paste(year, "9","1", sep = "-")),
+    ))
 
     return(out_data)
 }

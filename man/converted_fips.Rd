@@ -9,6 +9,9 @@ converted_fips(fips)
 \arguments{
 \item{fips}{the state abbreviation or fips code vector}
 }
+\value{
+States Abbreviations or FIPs as FIP character strings
+}
 \description{
 A function to check if a valid state number or fips is passed
 }

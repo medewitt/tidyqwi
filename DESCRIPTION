@@ -29,7 +29,8 @@ Imports:
     jsonlite,
     Hmisc,
     magrittr,
-    xml2
+    xml2,
+    stringr
 License: MIT + file LICENSE
 BugReports: https://github.com/medewitt/tidyqwi/issues
 Encoding: UTF-8

@@ -52,6 +52,8 @@ get_qwi <- function(years,
     stop(sprintf("Please specify a valid industry label.\nCheck the `industry_labels` table for details."))
   }
 
+  states <- converted_fips(states)
+
   # Verify all states are properly specified
   if(!all(states %in% state_info$state_fips)){
     stop(sprintf("%s contains an invalid fips code.\nPlease check the state_info table for details\non valid fips codes.",states))
@@ -66,15 +68,21 @@ get_qwi <- function(years,
     stop(sprintf("%s is before 1990.\nThe QWI data are only available after 1990.",min(years)))
   }
 
+  all_variables <- paste("Emp", "sEmp", "EmpEnd" ,"sEmpEnd", "EmpS",
+                     "sEmpS", "EmpTotal", "sEmpTotal", "EmpSpv",
+                     "sEmpSpv", "HirA", "sHirA", "HirN", "sHirN",
+                     "HirR", "sHirR","Sep","sSep","HirAEnd", "sHirAEnd",
+                     "SepBeg","sSepBeg","HirAEndRepl", "sHirAEndRepl",
+                     "HirAEndR", "sHirAEndR", "SepBegR", "sSepBegR",
+                     "HirAEndRepl", "sHirAEndRepl" , "SepS", "sSepS",
+                     "SepSnx", "sSepSnx", "TurnOvrS", "sTurnOvrS",sep=",")
+
   if(is.null(variables)){
-    variables <- paste("Emp", "sEmp", "EmpEnd" ,"sEmpEnd", "EmpS",
-                          "sEmpS", "EmpTotal", "sEmpTotal", "EmpSpv",
-                          "sEmpSpv", "HirA", "sHirA", "HirN", "sHirN",
-                          "HirR", "sHirR","Sep","sSep","HirAEnd", "sHirAEnd",
-                          "SepBeg","sSepBeg","HirAEndRepl", "sHirAEndRepl",
-                          "HirAEndR", "sHirAEndR", "SepBegR", "sSepBegR",
-                          "HirAEndRepl", "sHirAEndRepl" , "SepS", "sSepS",
-                          "SepSnx", "sSepSnx", "TurnOvrS", "sTurnOvrS",sep=",")
+    variables <- all_variables
+  }
+
+  if(!variables %in% all_variables){
+    stop(sprintf("You have not specified a valid variable name"))
   }
 
   if(industry_level %in% c("A", 2, 3, 4)){

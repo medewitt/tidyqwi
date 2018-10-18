@@ -59,3 +59,21 @@ test_that("fips code converter works",
           {
             expect_equal(converted_fips("nc    "), "37")
           })
+
+test_that("Try Catch helper function returns correct message",
+          {
+            mock_function <- function(a){
+              if(a == 1){
+                stop("Now")
+              }
+              if(a==2){
+                warning("I'm warning you")
+              }
+              if(a==3){
+                message("Hi")
+              }
+            }
+            expect_equal(show_condition(mock_function(1)), "error")
+            expect_equal(show_condition(mock_function(2)), "warning")
+            expect_equal(show_condition(mock_function(3)), "message")
+          })

@@ -7,6 +7,8 @@ status](https://travis-ci.org/medewitt/tidyqwi.svg?branch=master)](https://travi
 [![Coverage
 status](https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg)](https://codecov.io/github/medewitt/tidyqwi?branch=master)
 
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+
 # tidyqwi
 
 The goal of tidyqwi is to make accessing the US Census Bureau’s

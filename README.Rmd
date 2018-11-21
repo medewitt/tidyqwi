@@ -32,23 +32,29 @@ devtools::install_github("medewitt/tidyqi")
 
 After installation you can load and retrieve the desired data!
 
-```{r}
+```{r eval=FALSE}
 library(tidyqwi)
 
-output <- get_qwi(years = "2010", states = "37", apikey = census_key)
+nc_qwi <- get_qwi(years = "2010", states = "37", apikey = census_key, quiet = TRUE)
 
 ```
+
+```{r include=FALSE}
+library(tidyqwi)
+
+```
+
 
 And look at your data:
 
 ```{r}
-head(output)
+head(nc_qwi)
 ```
 
 And there are labels added
 
 ```{r}
-Hmisc::describe(output)
+Hmisc::describe(nc_qwi[,2:5])
 ```
 
 Please note that the 'tidyqwi' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

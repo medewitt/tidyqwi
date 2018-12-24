@@ -2,9 +2,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 [![Travis build
-status](https://travis-ci.org/medewitt/tidyqwi.svg?branch=master)](https://travis-ci.org/medewitt/tidyqwi)
-
-[![Coverage
+status](https://travis-ci.org/medewitt/tidyqwi.svg?branch=master)](https://travis-ci.org/medewitt/tidyqwi)[![Coverage
 status](https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg)](https://codecov.io/github/medewitt/tidyqwi?branch=master)
 
 # tidyqwi
@@ -29,22 +27,20 @@ After installation you can load and retrieve the desired data\!
 
 ``` r
 library(tidyqwi)
-#> Warning: replacing previous import 'dplyr::collapse' by 'glue::collapse'
-#> when loading 'tidyqwi'
 
 output <- get_qwi(years = "2010", states = "37", apikey = census_key)
 #> 
   |                                                                       
-  |                                                                 |   0%
+  |                                                                 |   0%37
   |                                                                       
-  |=================================================================| 100%
+  |=================================================================| 100%37373737373737373737373737373737373737
 ```
 
 And look at your data:
 
 ``` r
 head(output)
-#> # A tibble: 6 x 43
+#> # A tibble: 6 x 44
 #>   Emp   sEmp  EmpEnd sEmpEnd EmpS  sEmpS EmpTotal sEmpTotal EmpSpv sEmpSpv
 #>   <S3:> <S3:> <S3: > <S3: l> <S3:> <S3:> <S3: la> <S3: lab> <S3: > <S3: l>
 #> 1  124  1      117   1        108  1      153     1          117   1      
@@ -53,7 +49,7 @@ head(output)
 #> 4   16  9       14   9         12  9       25     9           11   9      
 #> 5   45  1       45   1         38  1       56     1           41   1      
 #> 6 2311  1     2527   1       2156  1     3101     1         2119   1      
-#> # ... with 33 more variables: HirA <S3: labelled>, sHirA <S3: labelled>,
+#> # ... with 34 more variables: HirA <S3: labelled>, sHirA <S3: labelled>,
 #> #   HirN <S3: labelled>, sHirN <S3: labelled>, HirR <S3: labelled>,
 #> #   sHirR <S3: labelled>, Sep <S3: labelled>, sSep <S3: labelled>,
 #> #   HirAEnd <S3: labelled>, sHirAEnd <S3: labelled>, SepBeg <S3:
@@ -66,7 +62,7 @@ head(output)
 #> #   sex <S3: labelled>, ownercode <S3: labelled>, seasonadj <S3:
 #> #   labelled>, industry <S3: labelled>, state <S3: labelled>,
 #> #   `metropolitan statistical area/micropolitan statistical area` <S3:
-#> #   labelled>
+#> #   labelled>, year_time <date>
 ```
 
 And there are labels added
@@ -75,7 +71,7 @@ And there are labels added
 Hmisc::describe(output)
 #> output 
 #> 
-#>  43  Variables      3244  Observations
+#>  44  Variables      3244  Observations
 #> ---------------------------------------------------------------------------
 #> Emp : Beginning-of-Quarter Employment: Counts 
 #>        n  missing distinct     Info     Mean      Gmd      .05      .10 
@@ -428,6 +424,14 @@ Hmisc::describe(output)
 #>     3244        0       41 
 #> 
 #> lowest : 10620 11700 14380 14820 15500, highest: 47260 47820 48900 48980 49180
+#> ---------------------------------------------------------------------------
+#> year_time 
+#>        n  missing distinct 
+#>     3244        0        4 
+#>                                                       
+#> Value      2010-01-01 2010-03-01 2010-06-01 2010-09-01
+#> Frequency         811        811        811        811
+#> Proportion       0.25       0.25       0.25       0.25
 #> ---------------------------------------------------------------------------
 ```
 

@@ -5,7 +5,7 @@ Authors@R: c(
     person(given = "Michael",
            family = "DeWitt",
            role = c("aut", "cre"),
-           email = "dewittme@wfu.edu",
+           email = "me.dewitt.jr@gmail.com",
            comment = c(ORCID = "0000-0001-8940-1967")),
     person(given = "Mona",
            family = "Ahmadiani",
@@ -17,7 +17,7 @@ Authors@R: c(
            role = c("aut"),
            email = "hydeas@wfu.edu")
            )
-Maintainer: Michael DeWitt <dewittme@wfu.edu>
+Maintainer: Michael DeWitt <me.dewitt.jr@gmail.com>
 Description: The purpose of this package is to access the 
     United States Census Bureau's Quarterly Workforce Indicator data. Additionally, 
     The data will be retrieved in a tidy format for further manipulation.

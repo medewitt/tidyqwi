@@ -27,14 +27,14 @@ Imports:
     dplyr,
     httr,
     jsonlite,
-    Hmisc,
     magrittr,
     xml2,
     stringr,
     purrr,
     stats,
     tidyr,
-    plyr
+    plyr,
+    labelled
 License: MIT + file LICENSE
 BugReports: https://github.com/medewitt/tidyqwi/issues
 Encoding: UTF-8

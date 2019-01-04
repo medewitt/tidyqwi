@@ -215,5 +215,6 @@ get_qwi <- function(years,
       quarter==4~as.Date(paste(year, "9","1", sep = "-")),
     ))
 
+  class(out_data) <- append(class(out_data),"qwi")
     return(out_data)
 }

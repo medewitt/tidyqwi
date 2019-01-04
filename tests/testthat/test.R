@@ -46,6 +46,17 @@ test_that("Valid API Key", {
                "A valid key must be included with each data API request. You included a key with this request, however, it is not valid. Please check your key and try again.If you do not have a key you my sign up for one here. ")
 })
 
+# check that labels fails
+test_that("add labels", {
+  expect_error(add_qwi_labels(mtcars),
+               "A valid qwi object has not been passed to this function")
+})
+
+# Check parsing fails
+
+test_that("parsing for post only", {
+  expect_error(parse_qwi_message(mtcars), "You have not passed a valid response")
+})
 
 test_that("All the data frames have been sucessfully loaded",
           {

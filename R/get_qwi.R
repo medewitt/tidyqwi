@@ -191,20 +191,6 @@ get_qwi <- function(years,
     dplyr::bind_rows() %>%
     tidyr::spread_("parameter", "value", fill = NA)
 
-  # desired_labels <- qwi_var_names[match(names(out_data), qwi_var_names$name),]
-  # desired_labels$`predicate type`[is.na(desired_labels$`predicate type`)] <- "string"
-  # desired_labels <- desired_labels[desired_labels$`predicate type`=="int",]
-  #
-  # out_data<- dplyr::mutate_at(out_data, dplyr::vars(desired_labels$name), .funs = as.numeric)
-  #
-  # desired_labels <- qwi_var_names$label[match(names(out_data), qwi_var_names$name)]
-  #
-  # Hmisc::label(out_data, self=FALSE) <- desired_labels
-  #out_data <- out_data %>%
-  #  rename(MSA = `metropolitan statistical area/micropolitan statistical area`)
-  #Hmisc::label(out_data[["state"]]) <- "State FIPS"
-  #Hmisc::label(out_data[["MSA"]]) <- "metropolitan statistical area/micropolitan statistical area"
-
   # Add a datetime column for the quarter. This will help with time series
   # manipulation down the line
   out_data <- non_error_returns %>%

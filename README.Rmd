@@ -31,7 +31,13 @@ After installation you can load and retrieve the desired data!
 ```{r eval=FALSE}
 library(tidyqwi)
 
-nc_qwi <- get_qwi(years = "2010", states = "37", apikey = census_key, quiet = TRUE)
+nc_qwi <- get_qwi(years = "2010", 
+                  states = "37", 
+                  geography = "county", 
+                  apikey = census_key, 
+                  quiet = TRUE, 
+                  variables = c("sEmp", "Emp"), 
+                  industry_level = "A")
 
 ```
 

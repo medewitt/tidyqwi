@@ -16,3 +16,7 @@ show_condition <- function(code) {
            message = function(c) "message"
   )
 }
+
+# Helper for safe processing
+
+safe_parse_qwi_message <- purrr::safely(parse_qwi_message)

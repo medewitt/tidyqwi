@@ -68,20 +68,20 @@ get_qwi <- function(years,
     stop(sprintf("%s is before 1990.\nThe QWI data are only available after 1990.",min(years)))
   }
 
-  all_variables <- paste("Emp", "sEmp", "EmpEnd" ,"sEmpEnd", "EmpS",
+  all_variables <- c("Emp", "sEmp", "EmpEnd" ,"sEmpEnd", "EmpS",
                      "sEmpS", "EmpTotal", "sEmpTotal", "EmpSpv",
                      "sEmpSpv", "HirA", "sHirA", "HirN", "sHirN",
                      "HirR", "sHirR","Sep","sSep","HirAEnd", "sHirAEnd",
                      "SepBeg","sSepBeg","HirAEndRepl", "sHirAEndRepl",
                      "HirAEndR", "sHirAEndR", "SepBegR", "sSepBegR",
                      "HirAEndRepl", "sHirAEndRepl" , "SepS", "sSepS",
-                     "SepSnx", "sSepSnx", "TurnOvrS", "sTurnOvrS",sep=",")
+                     "SepSnx", "sSepSnx", "TurnOvrS", "sTurnOvrS")
 
   if(is.null(variables)){
     variables <- all_variables
   }
 
-  if(!variables %in% all_variables){
+  if(!all(variables %in% all_variables)){
     stop(sprintf("You have not specified a valid variable name"))
   }
 
@@ -90,8 +90,8 @@ get_qwi <- function(years,
   } else{
     stop("You have not specified a valid NAICS Number Digit in `industry_level` (e.g. A, 2, 3, 4)")
   }
-  year_collapsed <- paste(years, collapse = ",")
-  quarter_collapsed <- paste(quarters, collapse = ",")
+  year_collapsed <- years
+  quarter_collapsed <- quarters
 
 
   if(!endpoint %in% c("sa", "se", "rh")){
@@ -139,95 +139,51 @@ get_qwi <- function(years,
 
   # Initialise some empty "collectors" which is where we will store our intermediate data.
 
-  collector <- list()
-  collect_industry <- dplyr::data_frame()
+  urls <- tidyr::crossing(variables,
+                          endpoint_to_retrieve,
+                          cross_tab,
+                          owner_code,
+                          year_collapsed,
+                          quarter_collapsed,
+                          geography,
+                          industries,
+                          states) %>%
+    dplyr::mutate(url = paste(
+      "https://api.census.gov/data/timeseries/qwi/",endpoint_to_retrieve,"?get=",
+      variables,
+      "&for=",geography,":*&in=state:",
+      states,
+      "&year=",year_collapsed,
+      "&quarter=",quarter_collapsed,
+      cross_tab,
+      owner_code,
+      "&seasonadj=",seasonadj,
+      "&industry=",
+      industries,
+      "&key=",
+      apikey,
+      sep = ""
+    ))
 
-  if(!quiet){
-    pb <- utils::txtProgressBar(min = 0, max = length(states), style = 3)
-  }
+  results <- purrr::map(urls$url, httr::GET)
 
-  for(j in seq_along(states)) {
-    state <- states[[j]]
+  output <- purrr::map(results, safe_parse_qwi_message)
 
-    if(!quiet){
-      setTxtProgressBar(pb, length(industries))
-    }
+  a<- purrr::transpose(output)[["result"]]
 
-    for (i in seq_along(industries)) {
-      industry <- industries[[i]]
+  non_error_returns <- plyr::compact(a) %>%
+    dplyr::bind_rows() %>%
+    tidyr::spread("parameter", "value", fill = NA)
 
-      if(!quiet){
-        cat(state)
-        setTxtProgressBar(pb, i)
-      }
-
-
-      url <-
-        paste(
-          "https://api.census.gov/data/timeseries/qwi/",endpoint_to_retrieve,"?get=",
-          variables,
-          "&for=",geography,":*&in=state:",
-          state,
-          "&year=",year_collapsed,
-          "&quarter=",quarter_collapsed,
-          cross_tab,
-          owner_code,
-          "&seasonadj=",seasonadj,
-          "&industry=",
-          industry,
-          "&key=",
-          apikey,
-          sep = ""
-        )
-
-      call <- httr::GET(url)
-
-      #IF 200 not returned or known error message returned:
-
-      #print(url)
-      if(!call$status_code %in% c(200)|
-         show_condition(check_census_api_call(call))!="error"){
-        # IF 200 was not returned then there was an error.
-
-        if(grepl(pattern = "valid key must", check_census_api_call(call))){
-          stop(check_census_api_call(call))
-        }
-
-        next(i)
-
-      } else{
-        # Keep going if there isn't an error
-        dat <- dplyr::as_data_frame(
-          jsonlite::fromJSON(
-            httr::content(call, as = "text")))
-
-        colnames(dat) <- dat[1, ]
-        dat <- dat[-1, ]
-
-        # Keep adding to the data frame
-        collect_industry <- dplyr::bind_rows(collect_industry, dat)
-      }
-
-    }
-    # Store for each state into a list
-    collector[[j]] <- collect_industry
-  }
-
-  # Turn the list to a single data frame
-  out_data <- dplyr::bind_rows(collector)
-  if(!quiet){
-    close(pb)
-  }
-
-  desired_labels <- qwi_var_names[match(names(out_data), qwi_var_names$name),]
-  desired_labels$`predicate type`[is.na(desired_labels$`predicate type`)] <- "string"
-  desired_labels <- desired_labels[desired_labels$`predicate type`=="int",]
-
-  out_data<- dplyr::mutate_at(out_data, dplyr::vars(desired_labels$name), .funs = as.numeric)
-
-  desired_labels <- qwi_var_names$label[match(names(out_data), qwi_var_names$name)]
-
-  Hmisc::label(out_data, self=FALSE) <- desired_labels
+  # desired_labels <- qwi_var_names[match(names(out_data), qwi_var_names$name),]
+  # desired_labels$`predicate type`[is.na(desired_labels$`predicate type`)] <- "string"
+  # desired_labels <- desired_labels[desired_labels$`predicate type`=="int",]
+  #
+  # out_data<- dplyr::mutate_at(out_data, dplyr::vars(desired_labels$name), .funs = as.numeric)
+  #
+  # desired_labels <- qwi_var_names$label[match(names(out_data), qwi_var_names$name)]
+  #
+  # Hmisc::label(out_data, self=FALSE) <- desired_labels
   #out_data <- out_data %>%
   #  rename(MSA = `metropolitan statistical area/micropolitan statistical area`)
   #Hmisc::label(out_data[["state"]]) <- "State FIPS"
@@ -235,7 +191,7 @@ get_qwi <- function(years,
 
   # Add a datetime column for the quarter. This will help with time series
   # manipulation down the line
-  out_data <- out_data %>%
+  out_data <- non_error_returns %>%
     dplyr::mutate(year_time =  dplyr::case_when(
       quarter==1~as.Date(paste(year, "1","1", sep = "-")),
       quarter==2~as.Date(paste(year, "3","1", sep = "-")),

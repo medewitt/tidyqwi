@@ -107,12 +107,12 @@ get_qwi <- function(years,
     cross_tab <- switch( endpoint,
                          sa = "&agegrp=A00&sex=0",
                          se = "&sex=0&education=E0",
-                         rg = "&race=A0&=ethnicity=A0")
+                         rh = "&race=A0&=ethnicity=A0")
   } else {
     cross_tab <- switch( endpoint,
                          sa = "&agegrp=A00&agegrp=A01&agegrp=A02&agegrp=A03&agegrp=A04&agegrp=A05&agegrp=A06&agegrp=A07&agegrp=A08&sex=0&sex=1&sex=2",
                          se = "&sex=0&sex=1&sex=2&education=E0&education=E1&education=E2&education=E3&education=E4&education=E5",
-                         rg = "&race=A0&race=A1&race=A2&race=A3&race=A4&race=A5&race=A6&race=A7&=ethnicity=A0&=ethnicity=A1&=ethnicity=A2")
+                         rh = "&race=A0&race=A1&race=A2&race=A3&race=A4&race=A5&race=A6&race=A7&=ethnicity=A0&=ethnicity=A1&=ethnicity=A2")
   }
 
   if( owner_code == TRUE){

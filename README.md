@@ -30,32 +30,29 @@ After installation you can load and retrieve the desired data\!
 ``` r
 library(tidyqwi)
 
-nc_qwi <- get_qwi(years = "2010", states = "37", apikey = census_key, quiet = TRUE)
+nc_qwi <- get_qwi(years = "2010", 
+                  states = "37", 
+                  geography = "county", 
+                  apikey =  census_key, 
+                  quiet = TRUE, 
+                  variables = c("sEmp", "Emp"), 
+                  industry_level = "A")
 ```
 
 And look at your data:
 
 ``` r
 head(nc_qwi)
-#> # A tibble: 6 x 44
-#>     Emp  sEmp EmpEnd sEmpEnd  EmpS sEmpS EmpTotal sEmpTotal EmpSpv sEmpSpv
-#>   <dbl> <dbl>  <dbl>   <dbl> <dbl> <dbl>    <dbl>     <dbl>  <dbl>   <dbl>
-#> 1   124     1    117       1   108     1      153         1    117       1
-#> 2   920     1    949       1   836     1     1132         1    835       1
-#> 3    19     1     22       1    19     1       27         1     19       1
-#> 4    16     9     14       9    12     9       25         9     11       9
-#> 5    45     1     45       1    38     1       56         1     41       1
-#> 6  2311     1   2527       1  2156     1     3101         1   2119       1
-#> # ... with 34 more variables: HirA <dbl>, sHirA <dbl>, HirN <dbl>,
-#> #   sHirN <dbl>, HirR <dbl>, sHirR <dbl>, Sep <dbl>, sSep <dbl>,
-#> #   HirAEnd <dbl>, sHirAEnd <dbl>, SepBeg <dbl>, sSepBeg <dbl>,
-#> #   HirAEndRepl <dbl>, sHirAEndRepl <dbl>, HirAEndR <dbl>,
-#> #   sHirAEndR <dbl>, SepBegR <dbl>, sSepBegR <dbl>, SepS <dbl>,
-#> #   sSepS <dbl>, SepSnx <dbl>, sSepSnx <dbl>, TurnOvrS <dbl>,
-#> #   sTurnOvrS <dbl>, year <dbl>, quarter <dbl>, agegrp <chr>, sex <chr>,
-#> #   ownercode <chr>, seasonadj <chr>, industry <chr>, state <chr>,
-#> #   `metropolitan statistical area/micropolitan statistical area` <chr>,
-#> #   year_time <date>
+#> # A tibble: 6 x 12
+#>   year  quarter agegrp sex   ownercode seasonadj industry state county
+#>   <chr> <chr>   <chr>  <chr> <chr>     <chr>     <chr>    <chr> <chr> 
+#> 1 2010  1       A00    0     A00       U         00       37    001   
+#> 2 2010  1       A00    0     A00       U         00       37    003   
+#> 3 2010  1       A00    0     A00       U         00       37    005   
+#> 4 2010  1       A00    0     A00       U         00       37    007   
+#> 5 2010  1       A00    0     A00       U         00       37    009   
+#> 6 2010  1       A00    0     A00       U         00       37    011   
+#> # ... with 3 more variables: Emp <chr>, sEmp <chr>, year_time <date>
 ```
 
 And there are labels added
@@ -64,39 +61,39 @@ And there are labels added
 Hmisc::describe(nc_qwi[,2:5])
 #> nc_qwi[, 2:5] 
 #> 
-#>  4  Variables      3244  Observations
+#>  4  Variables      400  Observations
 #> ---------------------------------------------------------------------------
-#> sEmp : Flag for Beginning-of-Quarter Employment: Counts 
-#>        n  missing distinct     Info     Mean      Gmd 
-#>     3244        0        3     0.43    2.274     2.14 
-#>                             
-#> Value          1     5     9
-#> Frequency   2685    85   474
-#> Proportion 0.828 0.026 0.146
+#> quarter 
+#>        n  missing distinct 
+#>      400        0        4 
+#>                               
+#> Value         1    2    3    4
+#> Frequency   100  100  100  100
+#> Proportion 0.25 0.25 0.25 0.25
 #> ---------------------------------------------------------------------------
-#> EmpEnd : End-of-Quarter Employment: Counts 
-#>        n  missing distinct     Info     Mean      Gmd      .05      .10 
-#>     3160       84     2130        1     4512     6997     59.0    110.9 
-#>      .25      .50      .75      .90      .95 
-#>    312.8    972.5   3007.2   9683.1  22439.7 
-#> 
-#> lowest :      0      3     11     12     13, highest: 101928 104612 105036 106905 107030
+#> agegrp 
+#>        n  missing distinct    value 
+#>      400        0        1      A00 
+#>               
+#> Value      A00
+#> Frequency  400
+#> Proportion   1
 #> ---------------------------------------------------------------------------
-#> sEmpEnd : Flag for End-of-Quarter Employment: Counts 
-#>        n  missing distinct     Info     Mean      Gmd 
-#>     3244        0        3    0.432    2.282    2.152 
-#>                             
-#> Value          1     5     9
-#> Frequency   2682    84   478
-#> Proportion 0.827 0.026 0.147
+#> sex 
+#>        n  missing distinct    value 
+#>      400        0        1        0 
+#>               
+#> Value        0
+#> Frequency  400
+#> Proportion   1
 #> ---------------------------------------------------------------------------
-#> EmpS : Full-Quarter Employment (Stable): Counts 
-#>        n  missing distinct     Info     Mean      Gmd      .05      .10 
-#>     3161       83     2060        1     4014     6240       52      101 
-#>      .25      .50      .75      .90      .95 
-#>      271      842     2641     8696    20366 
-#> 
-#> lowest :     0     8     9    10    11, highest: 87898 96709 97322 98712 98929
+#> ownercode 
+#>        n  missing distinct    value 
+#>      400        0        1      A00 
+#>               
+#> Value      A00
+#> Frequency  400
+#> Proportion   1
 #> ---------------------------------------------------------------------------
 ```
 

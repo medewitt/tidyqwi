@@ -8,7 +8,9 @@
 }
 
 # Helper for trycatching in the code
-
+#'@title show_condition
+#'@param code the code whose message you wish to interpret
+#'@export
 show_condition <- function(code) {
   tryCatch(code,
            error = function(c) "error",
@@ -17,6 +19,5 @@ show_condition <- function(code) {
   )
 }
 
-# Helper for safe processing
 
-safe_parse_qwi_message <- purrr::safely(parse_qwi_message)
+

@@ -165,7 +165,23 @@ get_qwi <- function(years,
       sep = ""
     ))
 
+  # Do a single check to confirm that there is a valid API Key
+
+  call <- httr::GET(urls$url[[1]])
+
+  if(!call$status_code %in% c(200)|
+     show_condition(check_census_api_call(call))!="error"){
+    # IF 200 was not returned then there was an error.
+
+    if(grepl(pattern = "valid key must", check_census_api_call(call))){
+      stop(check_census_api_call(call))
+    }
+  }
+
+  # Now do the vectorised version
   results <- purrr::map(urls$url, httr::GET)
+
+  safe_parse_qwi_message <- purrr::safely(parse_qwi_message)
 
   output <- purrr::map(results, safe_parse_qwi_message)
 
@@ -173,7 +189,7 @@ get_qwi <- function(years,
 
   non_error_returns <- plyr::compact(a) %>%
     dplyr::bind_rows() %>%
-    tidyr::spread("parameter", "value", fill = NA)
+    tidyr::spread_("parameter", "value", fill = NA)
 
   # desired_labels <- qwi_var_names[match(names(out_data), qwi_var_names$name),]
   # desired_labels$`predicate type`[is.na(desired_labels$`predicate type`)] <- "string"

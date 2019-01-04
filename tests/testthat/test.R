@@ -41,10 +41,10 @@ test_that("Catch for geography", {
 })
 
 # I need to rethink through this test
-# test_that("Valid API Key", {
-#   expect_error(get_qwi(years = c(2011), states = c("01"), apikey = NULL),
-#                "A valid key must be included with each data API request. You included a key with this request, however, it is not valid. Please check your key and try again.If you do not have a key you my sign up for one here. ")
-# })
+test_that("Valid API Key", {
+  expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "A"),
+               "A valid key must be included with each data API request. You included a key with this request, however, it is not valid. Please check your key and try again.If you do not have a key you my sign up for one here. ")
+})
 
 
 test_that("All the data frames have been sucessfully loaded",

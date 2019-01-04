@@ -34,7 +34,7 @@ library(tidyqwi)
 nc_qwi <- get_qwi(years = "2010", 
                   states = "37", 
                   geography = "county", 
-                  apikey = census_key, 
+                  apikey =  census_key, 
                   quiet = TRUE, 
                   variables = c("sEmp", "Emp"), 
                   industry_level = "A")

@@ -60,6 +60,14 @@ test_that("fips code converter works",
             expect_equal(converted_fips("nc    "), "37")
           })
 
+show_condition <- function(code) {
+  tryCatch(code,
+           error = function(c) "error",
+           warning = function(c) "warning",
+           message = function(c) "message"
+  )
+}
+
 test_that("Try Catch helper function returns correct message",
           {
             mock_function <- function(a){

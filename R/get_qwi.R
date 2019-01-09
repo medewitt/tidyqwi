@@ -91,7 +91,8 @@ get_qwi <- function(years,
     stop("You have not specified a valid NAICS Number Digit in `industry_level` (e.g. A, 2, 3, 4)")
   }
   year_collapsed <- years
-  quarter_collapsed <- quarters
+
+  quarter_collapsed <- paste(quarters, collapse = ",")
 
 
   if(!endpoint %in% c("sa", "se", "rh")){
@@ -179,7 +180,12 @@ get_qwi <- function(years,
   }
 
   # Now do the vectorised version
-  results <- purrr::map(urls$url, httr::GET)
+
+  #results <- purrr::map(urls$url, httr::GET)
+  results <- list()
+  for(i in 1:nrow(urls)){
+    results[[i]] <- httr::GET(urls$url[[i]])
+  }
 
   safe_parse_qwi_message <- purrr::safely(parse_qwi_message)
 

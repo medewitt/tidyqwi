@@ -166,6 +166,7 @@ get_qwi <- function(years,
       sep = ""
     ))
 
+  print(nrow(urls))
   # Do a single check to confirm that there is a valid API Key
 
   call <- httr::GET(urls$url[[1]])
@@ -185,6 +186,7 @@ get_qwi <- function(years,
   results <- list()
   for(i in 1:nrow(urls)){
     results[[i]] <- httr::GET(urls$url[[i]])
+    print(paste0(i, "out of", nrow(urls)))
   }
 
   safe_parse_qwi_message <- purrr::safely(parse_qwi_message)

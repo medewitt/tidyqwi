@@ -36,7 +36,7 @@ nc_qwi <- get_qwi(years = "2010",
                   apikey =  census_key, 
                   quiet = TRUE, 
                   variables = c("sEmp", "Emp"), 
-                  industry_level = "2")
+                  industry_level = "2", processing = "multiprocess")
 ```
 
 And look at your data:

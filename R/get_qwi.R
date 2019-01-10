@@ -16,6 +16,7 @@
 #'@param seasonadj seasonal adjustment factor (one of "U" or "S")
 #'@param apikey your US Census API Key
 #'@param quiet specify if progress is to be printed (default = FALSE)
+#'@param processing the processing strategy (default = "sequential")
 #'
 #'@return the desired data from the US Census's Quaterly Workforce API
 #'@examples
@@ -27,6 +28,7 @@
 #'@import dplyr
 #'@import httr
 #'@import utils
+#'@importFrom future plan
 #'@export
 
 get_qwi <- function(years,
@@ -40,6 +42,7 @@ get_qwi <- function(years,
                     geography = "cbsa",
                     seasonadj = "U",
                     apikey = NULL,
+                    processing = "sequential",
                     quiet = FALSE) {
 
   # Ensure quarters are properly supplied
@@ -192,7 +195,12 @@ get_qwi <- function(years,
 
   safe_parse_qwi_message <- purrr::safely(parse_qwi_message)
 
-  output <- purrr::map(results, safe_parse_qwi_message)
+
+  strategy <- paste0("future::", processing)
+
+  plan(strategy)
+
+  output <- furrr::future_map(results, safe_parse_qwi_message)
 
   a<- purrr::transpose(output)[["result"]]
 
@@ -204,13 +212,17 @@ get_qwi <- function(years,
 
   # Add a datetime column for the quarter. This will help with time series
   # manipulation down the line
-  out_data <- non_error_returns %>%
-    dplyr::mutate(year_time =  dplyr::case_when(
-      quarter==1~as.Date(paste(year, "1","1", sep = "-")),
-      quarter==2~as.Date(paste(year, "3","1", sep = "-")),
-      quarter==3~as.Date(paste(year, "6","1", sep = "-")),
-      quarter==4~as.Date(paste(year, "9","1", sep = "-")),
-    ))
+  out_data <- dplyr::mutate(
+    non_error_returns,
+    year_time =  dplyr::case_when(
+      quarter == 1 ~ as.Date(paste(year, "1", "1", sep = "-")),
+      quarter == 2 ~ as.Date(paste(year, "3", "1", sep = "-")),
+      quarter == 3 ~ as.Date(paste(year, "6", "1", sep = "-")),
+      quarter == 4 ~ as.Date(paste(year, "9", "1", sep = "-")),
+    )
+  )
+  oplan <- plan()
+  on.exit(plan(oplan), add = TRUE)
 
   class(out_data) <- append(class(out_data),"qwi")
     return(out_data)

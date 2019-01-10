@@ -86,7 +86,7 @@
 <a class="sourceLine" id="cb2-6" data-line-number="6">                  <span class="dt">apikey =</span>  census_key, </a>
 <a class="sourceLine" id="cb2-7" data-line-number="7">                  <span class="dt">quiet =</span> <span class="ot">TRUE</span>, </a>
 <a class="sourceLine" id="cb2-8" data-line-number="8">                  <span class="dt">variables =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"sEmp"</span>, <span class="st">"Emp"</span>), </a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">                  <span class="dt">industry_level =</span> <span class="st">"2"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-9" data-line-number="9">                  <span class="dt">industry_level =</span> <span class="st">"2"</span>, <span class="dt">processing =</span> <span class="st">"multiprocess"</span>)</a></code></pre></div>
 <p>And look at your data:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(nc_qwi)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 6 x 12</span></a>

@@ -22,7 +22,8 @@ Description: The purpose of this package is to access the
     United States Census Bureau's Quarterly Workforce Indicator data. Additionally, 
     The data will be retrieved in a tidy format for further manipulation.
 Depends:
-  R (>= 3.0)
+  R (>= 3.0),
+  future (>= 1.6.2)
 Imports:
     dplyr,
     httr,
@@ -34,7 +35,8 @@ Imports:
     stats,
     tidyr,
     plyr,
-    labelled
+    labelled,
+    furrr
 License: MIT + file LICENSE
 BugReports: https://github.com/medewitt/tidyqwi/issues
 Encoding: UTF-8
@@ -42,4 +44,7 @@ LazyData: true
 RoxygenNote: 6.1.1
 Suggests: 
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

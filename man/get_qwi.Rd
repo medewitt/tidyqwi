@@ -7,7 +7,7 @@
 get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
   industry_level = 2, states, endpoint = "sa", all_groups = TRUE,
   owner_code = TRUE, geography = "cbsa", seasonadj = "U",
-  apikey = NULL, quiet = FALSE)
+  apikey = NULL, processing = "sequential", quiet = FALSE)
 }
 \arguments{
 \item{years}{years to fetch (e.g. 2010, or c(2010, 2011))}
@@ -31,6 +31,8 @@ get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
 \item{seasonadj}{seasonal adjustment factor (one of "U" or "S")}
 
 \item{apikey}{your US Census API Key}
+
+\item{processing}{the processing strategy (default = "sequential")}
 
 \item{quiet}{specify if progress is to be printed (default = FALSE)}
 }

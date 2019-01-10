@@ -31,7 +31,13 @@ After installation you can load and retrieve the desired data!
 ```{r eval=FALSE}
 library(tidyqwi)
 
-nc_qwi <- get_qwi(years = "2010", states = "37", apikey = census_key, quiet = TRUE)
+nc_qwi <- get_qwi(years = "2010", 
+                  states = "37", 
+                  geography = "county", 
+                  apikey =  census_key, 
+                  quiet = TRUE, 
+                  variables = c("sEmp", "Emp"), 
+                  industry_level = "2")
 
 ```
 
@@ -47,10 +53,35 @@ And look at your data:
 head(nc_qwi)
 ```
 
-And there are labels added
+And there are labels added if desired
 
 ```{r}
-Hmisc::describe(nc_qwi[,2:5])
+labelled_nc <- add_qwi_labels(nc_qwi)
 ```
+
+
+```{r}
+Hmisc::describe(labelled_nc$Emp)
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+labelled_nc %>%
+  filter(county == "067") %>% 
+  ggplot(aes(year_time, Emp, color = county))+
+  geom_line()+
+  scale_y_log10()+
+  facet_wrap(~industry)+
+  labs(
+    title = "Quarterly Workforce Indicators for Forsyth County",
+    subtitle = attributes(labelled_nc$Emp)$label,
+    caption = "Data: US Census Bureau QWI"
+  )+
+  theme_minimal()
+
+```
+
 
 Please note that the 'tidyqwi' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

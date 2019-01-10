@@ -8,7 +8,9 @@
 }
 
 # Helper for trycatching in the code
-
+#'@title show_condition
+#'@param code the code whose message you wish to interpret
+#'@export
 show_condition <- function(code) {
   tryCatch(code,
            error = function(c) "error",
@@ -16,3 +18,6 @@ show_condition <- function(code) {
            message = function(c) "message"
   )
 }
+
+
+

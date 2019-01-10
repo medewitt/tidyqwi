@@ -40,11 +40,23 @@ test_that("Catch for geography", {
                "Please specify a valid seasonal adjustment parameter of `S` or `U`")
 })
 
+# I need to rethink through this test
 test_that("Valid API Key", {
-  expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "MYKEY"),
+  expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "A"),
                "A valid key must be included with each data API request. You included a key with this request, however, it is not valid. Please check your key and try again.If you do not have a key you my sign up for one here. ")
 })
 
+# check that labels fails
+test_that("add labels", {
+  expect_error(add_qwi_labels(mtcars),
+               "A valid qwi object has not been passed to this function")
+})
+
+# Check parsing fails
+
+test_that("parsing for post only", {
+  expect_error(parse_qwi_message(mtcars), "You have not passed a valid response")
+})
 
 test_that("All the data frames have been sucessfully loaded",
           {
@@ -59,14 +71,6 @@ test_that("fips code converter works",
           {
             expect_equal(converted_fips("nc    "), "37")
           })
-
-show_condition <- function(code) {
-  tryCatch(code,
-           error = function(c) "error",
-           warning = function(c) "warning",
-           message = function(c) "message"
-  )
-}
 
 test_that("Try Catch helper function returns correct message",
           {

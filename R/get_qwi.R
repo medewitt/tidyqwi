@@ -166,7 +166,8 @@ get_qwi <- function(years,
       sep = ""
     ))
 
-  print(nrow(urls))
+  #print(nrow(urls))
+
   # Do a single check to confirm that there is a valid API Key
 
   call <- httr::GET(urls$url[[1]])
@@ -183,10 +184,10 @@ get_qwi <- function(years,
   # Now do the vectorised version
 
   #results <- purrr::map(urls$url, httr::GET)
-  results <- list()
+  results <- vector("list", length = nrow(urls))
   for(i in 1:nrow(urls)){
     results[[i]] <- httr::GET(urls$url[[i]])
-    print(paste0(i, "out of", nrow(urls)))
+    #print(paste0(i, "out of", nrow(urls)))
   }
 
   safe_parse_qwi_message <- purrr::safely(parse_qwi_message)
@@ -195,9 +196,11 @@ get_qwi <- function(years,
 
   a<- purrr::transpose(output)[["result"]]
 
-  non_error_returns <- plyr::compact(a) %>%
-    dplyr::bind_rows() %>%
-    tidyr::spread_("parameter", "value", fill = NA)
+  non_error_returns <- tidyr::spread_(
+    dplyr::bind_rows(
+      plyr::compact(a)),
+    "parameter", "value", fill = NA)
+
 
   # Add a datetime column for the quarter. This will help with time series
   # manipulation down the line

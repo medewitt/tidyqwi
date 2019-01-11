@@ -6,6 +6,9 @@
 
 
 check_census_api_call <- function(call){
+  if(class(call) != "response"){
+    stop("A valid response was not returned")
+  }
   httr::content(call, as = "text", encoding = "UTF-8") %>%
     xml2::as_xml_document() %>%
     xml2::xml_find_all("body") %>%

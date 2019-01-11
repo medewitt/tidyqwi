@@ -89,3 +89,15 @@ test_that("Try Catch helper function returns correct message",
             expect_equal(show_condition(mock_function(2)), "warning")
             expect_equal(show_condition(mock_function(3)), "message")
           })
+
+# Check that labeling function works
+test_that("Try that labels are added",
+          {
+            labels_add <- add_qwi_labels(nc_qwi)
+            expect_equal(attributes(labels_add$ownercode)$label, "Group: Ownership group code")
+          })
+
+# Test that api verifies a returned object
+test_that("call checking works", {
+  expect_error(check_census_api_call(mtcars))
+})

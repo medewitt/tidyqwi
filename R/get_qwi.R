@@ -206,7 +206,7 @@ get_qwi <- function(years,
 
   non_error_returns <- tidyr::spread_(
     dplyr::bind_rows(
-      plyr::compact(a)),
+      purrr::compact(a)),
     "parameter", "value", fill = NA)
 
 

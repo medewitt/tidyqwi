@@ -22,7 +22,7 @@ This is a work in progress\!
 ## Installation
 
 ``` r
-devtools::install_github("medewitt/tidyqi")
+devtools::install_github("medewitt/tidyqwi")
 ```
 
 After installation you can load and retrieve the desired data\!

@@ -71,14 +71,72 @@ get_qwi <- function(years,
     stop(sprintf("%s is before 1990.\nThe QWI data are only available after 1990.",min(years)))
   }
 
-  all_variables <- c("Emp", "sEmp", "EmpEnd" ,"sEmpEnd", "EmpS",
-                     "sEmpS", "EmpTotal", "sEmpTotal", "EmpSpv",
-                     "sEmpSpv", "HirA", "sHirA", "HirN", "sHirN",
-                     "HirR", "sHirR","Sep","sSep","HirAEnd", "sHirAEnd",
-                     "SepBeg","sSepBeg","HirAEndRepl", "sHirAEndRepl",
-                     "HirAEndR", "sHirAEndR", "SepBegR", "sSepBegR",
-                     "HirAEndRepl", "sHirAEndRepl" , "SepS", "sSepS",
-                     "SepSnx", "sSepSnx", "TurnOvrS", "sTurnOvrS")
+  all_variables <- c(
+    "EarnBeg",
+    "EarnHirAS",
+    "EarnHirNS",
+    "EarnS",
+    "EarnSepS",
+    "Emp",
+    "EmpEnd",
+    "EmpS",
+    "EmpSpv",
+    "EmpTotal",
+    "FrmJbC",
+    "FrmJbCS",
+    "FrmJbGn",
+    "FrmJbGnS",
+    "FrmJbLs",
+    "FrmJbLsS",
+    "HirA",
+    "HirAEnd",
+    "HirAEndR",
+    "HirAEndRepl",
+    "HirAEndReplr",
+    "HirAs",
+    "HirN",
+    "HirNs",
+    "HirR",
+    "Payroll",
+    "sEarnBeg",
+    "sEarnHirAS",
+    "sEarnHirNS",
+    "sEarnS",
+    "sEarnSepS",
+    "sEmp",
+    "sEmpEnd",
+    "sEmpS",
+    "sEmpSpv",
+    "sEmpTotal",
+    "Sep",
+    "SepBeg",
+    "SepBegR",
+    "SepS",
+    "SepSnx",
+    "sFrmJbC",
+    "sFrmJbCS",
+    "sFrmJbGn",
+    "sFrmJbGnS",
+    "sFrmJbLs",
+    "sFrmJbLsS",
+    "sHirA",
+    "sHirAEnd",
+    "sHirAEndR",
+    "sHirAEndRepl",
+    "sHirAEndReplr",
+    "sHirAs",
+    "sHirN",
+    "sHirNs",
+    "sHirR",
+    "sPayroll",
+    "sSep",
+    "sSepBeg",
+    "sSepBegR",
+    "sSepS",
+    "sSepSnx",
+    "sTurnOvrS",
+    "TurnOvrS"
+  )
 
   if(is.null(variables)){
     variables <- all_variables
@@ -111,20 +169,20 @@ get_qwi <- function(years,
     cross_tab <- switch( endpoint,
                          sa = "&agegrp=A00&sex=0",
                          se = "&sex=0&education=E0",
-                         rh = "&race=A0&=ethnicity=A0")
+                         rh = "&race=A0&ethnicity=A0")
   } else {
     cross_tab <- switch( endpoint,
-                         sa = "&agegrp=A00&agegrp=A01&agegrp=A02&agegrp=A03&agegrp=A04&agegrp=A05&agegrp=A06&agegrp=A07&agegrp=A08&sex=0&sex=1&sex=2",
-                         se = "&sex=0&sex=1&sex=2&education=E0&education=E1&education=E2&education=E3&education=E4&education=E5",
-                         rh = "&race=A0&race=A1&race=A2&race=A3&race=A4&race=A5&race=A6&race=A7&=ethnicity=A0&=ethnicity=A1&=ethnicity=A2")
+                         sa = "&sex=1&sex=2&agegrp=A01&agegrp=A02&agegrp=A03&agegrp=A04&agegrp=A05&agegrp=A06&agegrp=A07&agegrp=A08",
+                         se = "&sex=1&sex=2&education=E1&education=E2&education=E3&education=E4&education=E5",
+                         rh = "&race=A1&race=A2&race=A3&race=A4&race=A5&race=A6&race=A7&ethnicity=A1&ethnicity=A2")
   }
 
   if( owner_code == TRUE){
     owner_code <- "&ownercode=A00"
   } else {
     owner_code <- switch( owner_code,
-                          A01 = "&ownercode=A00&ownercode=A01",
-                          A02 = "&ownercode=A00&ownercode=A02")
+                          A01 = "&ownercode=A01",
+                          A02 = "&ownercode=A02")
   }
 
   if(!geography %in% c("cbsa", "county")){

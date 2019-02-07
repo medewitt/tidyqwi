@@ -31,11 +31,11 @@ After installation you can load and retrieve the desired data\!
 library(tidyqwi)
 
 nc_qwi <- get_qwi(years = "2010", 
-                  states = "37", 
+                  states = "11", 
                   geography = "county", 
                   apikey =  census_key, 
-                  quiet = TRUE, 
-                  variables = c("sEmp", "Emp"), 
+                  quiet = TRUE, endpoint = "rh",
+                  variables = c("sEmp", "Emp"), all_groups = FALSE,
                   industry_level = "2", processing = "multiprocess")
 ```
 

@@ -233,7 +233,8 @@ get_qwi <- function(years,
 
   call <- httr::GET(urls$url[[1]])
 
-  if(!call$status_code %in% c(200)|
+
+  if(!substr(call$status_code,1,1) == "2"|
      show_condition(check_census_api_call(call))!="error"){
     # IF 200 was not returned then there was an error.
 

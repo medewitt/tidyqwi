@@ -9,13 +9,12 @@
 #'@param quarters The quarters to fetch (e.g. c(1,2,3,4)) Default is all
 #'@param industry_level Industries to fetch. Default is all level 2
 #'@param states state fips code to fetch
-#'@param endpoint US Census endpoint designation. One of "SA" for Sex * Age, "SE" for Sex by Education and "rh" for Race/Ethnicity
+#'@param endpoint US Census endpoint designation. One of "sa" for Sex * Age, "se" for Sex by Education and "rh" for Race/Ethnicity
 #'@param all_groups default to true
 #'@param owner_code firm owner code
 #'@param geography the US Census geography granuality (one of cbsa or county)
 #'@param seasonadj seasonal adjustment factor (one of "U" or "S")
 #'@param apikey your US Census API Key
-#'@param quiet specify if progress is to be printed (default = FALSE)
 #'@param processing the processing strategy (default = "sequential")
 #'
 #'@return the desired data from the US Census's Quaterly Workforce API
@@ -42,8 +41,7 @@ get_qwi <- function(years,
                     geography = "cbsa",
                     seasonadj = "U",
                     apikey = NULL,
-                    processing = "sequential",
-                    quiet = FALSE) {
+                    processing = "sequential") {
 
   # Ensure quarters are properly supplied
   if(!all(quarters %in% c(1,2,3,4))){

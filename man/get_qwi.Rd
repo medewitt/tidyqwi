@@ -7,7 +7,7 @@
 get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
   industry_level = 2, states, endpoint = "sa", all_groups = TRUE,
   owner_code = TRUE, geography = "cbsa", seasonadj = "U",
-  apikey = NULL, processing = "sequential", quiet = FALSE)
+  apikey = NULL, processing = "sequential")
 }
 \arguments{
 \item{years}{years to fetch (e.g. 2010, or c(2010, 2011))}
@@ -20,7 +20,7 @@ get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
 
 \item{states}{state fips code to fetch}
 
-\item{endpoint}{US Census endpoint designation. One of "SA" for Sex * Age, "SE" for Sex by Education and "rh" for Race/Ethnicity}
+\item{endpoint}{US Census endpoint designation. One of "sa" for Sex * Age, "se" for Sex by Education and "rh" for Race/Ethnicity}
 
 \item{all_groups}{default to true}
 
@@ -33,8 +33,6 @@ get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
 \item{apikey}{your US Census API Key}
 
 \item{processing}{the processing strategy (default = "sequential")}
-
-\item{quiet}{specify if progress is to be printed (default = FALSE)}
 }
 \value{
 the desired data from the US Census's Quaterly Workforce API

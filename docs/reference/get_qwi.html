@@ -82,6 +82,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/multi_state_year.html">Gathering QWI Data Over Several Years for Multiple States</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -119,7 +131,7 @@
     <pre class="usage"><span class='fu'>get_qwi</span>(<span class='no'>years</span>, <span class='kw'>variables</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>quarters</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>),
   <span class='kw'>industry_level</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='no'>states</span>, <span class='kw'>endpoint</span> <span class='kw'>=</span> <span class='st'>"sa"</span>, <span class='kw'>all_groups</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>owner_code</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>geography</span> <span class='kw'>=</span> <span class='st'>"cbsa"</span>, <span class='kw'>seasonadj</span> <span class='kw'>=</span> <span class='st'>"U"</span>,
-  <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>processing</span> <span class='kw'>=</span> <span class='st'>"sequential"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>processing</span> <span class='kw'>=</span> <span class='st'>"sequential"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,7 +158,7 @@
     </tr>
     <tr>
       <th>endpoint</th>
-      <td><p>US Census endpoint designation. One of "SA" for Sex * Age, "SE" for Sex by Education and "rh" for Race/Ethnicity</p></td>
+      <td><p>US Census endpoint designation. One of "sa" for Sex * Age, "se" for Sex by Education and "rh" for Race/Ethnicity</p></td>
     </tr>
     <tr>
       <th>all_groups</th>
@@ -171,10 +183,6 @@
     <tr>
       <th>processing</th>
       <td><p>the processing strategy (default = "sequential")</p></td>
-    </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>specify if progress is to be printed (default = FALSE)</p></td>
     </tr>
     </table>
     

@@ -1,5 +1,5 @@
 Package: tidyqwi
-Title: A Convient API for Accessing UCB's Quarterly Workforce Indicator
+Title: A Convenient API for Accessing UCB's Quarterly Workforce Indicator
 Version: 0.0.0.9000
 Authors@R: c(
     person(given = "Michael",

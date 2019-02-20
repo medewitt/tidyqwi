@@ -44,7 +44,7 @@ argList <- list(x = state, y = year)
 arguments <- cross_df(argList)
 ```
 
-The using the multiple processing function we can submit the following:
+Using the multiple processing function we can submit the following:
 
 ```{r eval=FALSE}
 plan("multiprocess")

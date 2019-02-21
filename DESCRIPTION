@@ -1,6 +1,6 @@
 Package: tidyqwi
 Title: A Convenient API for Accessing UCB's Quarterly Workforce Indicator
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person(given = "Michael",
            family = "DeWitt",
@@ -20,7 +20,8 @@ Authors@R: c(
 Maintainer: Michael DeWitt <me.dewitt.jr@gmail.com>
 Description: The purpose of this package is to access the 
     United States Census Bureau's Quarterly Workforce Indicator data. Additionally, 
-    The data will be retrieved in a tidy format for further manipulation.
+    The data will be retrieved in a tidy format for further manipulation with full variable
+    descriptions added if desired.
 Depends:
   R (>= 3.0),
   future (>= 1.6.2)

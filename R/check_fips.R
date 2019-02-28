@@ -5,10 +5,10 @@
 #' @examples \donttest{
 #' library(tidyqwi)
 #'
-#' convert_fips(37)
-#' convert_fips("37")
-#' convert_fips("NC")
-#' convert_fips("nc")
+#' converted_fips(37)
+#' converted_fips("37")
+#' converted_fips("NC")
+#' converted_fips("nc")
 #'
 #' }
 #'

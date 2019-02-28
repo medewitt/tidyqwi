@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="add_qwi_labels — add_qwi_labels" />
 
-<meta property="og:description" content="add_qwi_labels" />
+<meta property="og:description" content="This function add labels to a `qwi` object" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyqwi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 
     <div class="ref-description">
     
-    <p>add_qwi_labels</p>
+    <p>This function add labels to a `qwi` object</p>
     
     </div>
 
@@ -132,12 +132,25 @@
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>tidyqwi</span>)
+
+<span class='co'># Add labels</span>
+<span class='no'>labelled_nc</span> <span class='kw'>&lt;-</span> <span class='fu'>add_qwi_labels</span>(<span class='no'>nc_qwi</span>)
+
+<span class='co'># Check the label for the data</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/attr'>attr</a></span>(<span class='no'>labelled_nc</span><span class='kw'>[[</span><span class='st'>"Emp"</span>]], <span class='st'>"label"</span>)</div><div class='output co'>#&gt; [1] "Beginning-of-Quarter Employment: Counts"</div><div class='input'>
+
+</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

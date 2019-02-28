@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyqwi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -76,7 +76,7 @@
       <h1>Gathering QWI Data Over Several Years for Multiple States</h1>
                         <h4 class="author">Mona Ahmadiani</h4>
             
-            <h4 class="date">2019-02-19</h4>
+            <h4 class="date">2019-02-28</h4>
       
       
       <div class="hidden name"><code>multi_state_year.Rmd</code></div>
@@ -105,7 +105,7 @@
 <a class="sourceLine" id="cb2-9" title="9">argList &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">x =</span> state, <span class="dt">y =</span> year)</a>
 <a class="sourceLine" id="cb2-10" title="10"></a>
 <a class="sourceLine" id="cb2-11" title="11">arguments &lt;-<span class="st"> </span><span class="kw">cross_df</span>(argList)</a></code></pre></div>
-<p>The using the multiple processing function we can submit the following:</p>
+<p>Using the multiple processing function we can submit the following:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">plan</span>(<span class="st">"multiprocess"</span>)</a>
 <a class="sourceLine" id="cb3-2" title="2"></a>
 <a class="sourceLine" id="cb3-3" title="3">qwi_data &lt;-<span class="st"> </span><span class="kw">map2</span>(arguments<span class="op">$</span>x, arguments<span class="op">$</span>y, <span class="op">~</span></a>

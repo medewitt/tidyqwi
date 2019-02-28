@@ -2,7 +2,18 @@
 #' @param call a returned call from the US Census API
 #' @import xml2
 #' @import  httr
+#'@examples \donttest{
+#'library(tidyqwi)
+#'library(httr)
+#' # A single call to the API without an API Key
+#'url <- "api.census.gov/data/timeseries/qwi/sa?get=Emp&for=county:198&key=NOKEY"
+#'single_call <- httr::GET(url)
 #'
+#'# Because a non valid API key was specified an message will be returned
+#'
+#'check_census_api_call(single_call)
+#'
+#'}
 #'
 #' @export
 

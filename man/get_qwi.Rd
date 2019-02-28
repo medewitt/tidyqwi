@@ -45,7 +45,7 @@ The purpose of this function is to retrive firm information from the
    inside of the US Census' limits on the API.
 }
 \examples{
-\donttest{
+\dontrun{
 library(tidyqwi)
 
 # One state, one year
@@ -53,7 +53,7 @@ nc_qwi <- get_qwi(years = "2010",
                states = "11",
                geography = "county",
                apikey =  census_key,
-               quiet = TRUE, endpoint = "rh",
+               endpoint = "rh",
                variables = c("sEmp", "Emp"), all_groups = FALSE,
                industry_level = "2", processing = "sequential")
 
@@ -62,7 +62,7 @@ qwi_multi_year <- get_qwi(years = c("2010", "2011", "2012"),
                states = c("NC", "SC"),
                geography = "county",
                apikey =  census_key,
-               quiet = TRUE, endpoint = "rh",
+               endpoint = "rh",
                variables = c("sEmp", "Emp"), all_groups = FALSE,
                industry_level = "2", processing = "sequential")
 }

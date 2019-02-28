@@ -24,7 +24,7 @@
 #'@import utils
 #'@importFrom future plan
 #'
-#'@examples \donttest{
+#'@examples \dontrun{
 #'library(tidyqwi)
 #'
 #' # One state, one year
@@ -32,7 +32,7 @@
 #'                states = "11",
 #'                geography = "county",
 #'                apikey =  census_key,
-#'                quiet = TRUE, endpoint = "rh",
+#'                endpoint = "rh",
 #'                variables = c("sEmp", "Emp"), all_groups = FALSE,
 #'                industry_level = "2", processing = "sequential")
 #'
@@ -41,7 +41,7 @@
 #'                states = c("NC", "SC"),
 #'                geography = "county",
 #'                apikey =  census_key,
-#'                quiet = TRUE, endpoint = "rh",
+#'                endpoint = "rh",
 #'                variables = c("sEmp", "Emp"), all_groups = FALSE,
 #'                industry_level = "2", processing = "sequential")
 #'}

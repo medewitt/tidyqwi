@@ -1,4 +1,5 @@
 #'@title parse_qwi
+#'@description An internally used function to parse the returned API call.
 #'@param x a returned call response from the US Census QWI API
 #'@export
 

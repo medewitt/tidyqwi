@@ -15,7 +15,13 @@ This function add labels to a `qwi` object
 \examples{
 \donttest{
 library(tidyqwi)
+
+# Add labels
 labelled_nc <- add_qwi_labels(nc_qwi)
+
+# Check the label for the data
+attr(labelled_nc[["Emp"]], "label")
+
 
 }
 

@@ -10,5 +10,5 @@ parse_qwi_message(x)
 \item{x}{a returned call response from the US Census QWI API}
 }
 \description{
-parse_qwi
+An internally used function to parse the returned API call.
 }

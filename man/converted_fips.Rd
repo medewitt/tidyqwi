@@ -19,10 +19,10 @@ A function to check if a valid state number or fips is passed
 \donttest{
 library(tidyqwi)
 
-convert_fips(37)
-convert_fips("37")
-convert_fips("NC")
-convert_fips("nc")
+converted_fips(37)
+converted_fips("37")
+converted_fips("NC")
+converted_fips("nc")
 
 }
 

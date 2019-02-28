@@ -2,6 +2,8 @@
 #' @param call a returned call from the US Census API
 #' @import xml2
 #' @import  httr
+#'
+#'
 #' @export
 
 

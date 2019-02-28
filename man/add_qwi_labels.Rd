@@ -10,5 +10,13 @@ add_qwi_labels(df)
 \item{df}{an object with a class of `qwi`}
 }
 \description{
-add_qwi_labels
+This function add labels to a `qwi` object
+}
+\examples{
+\donttest{
+library(tidyqwi)
+labelled_nc <- add_qwi_labels(nc_qwi)
+
+}
+
 }

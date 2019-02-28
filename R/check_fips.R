@@ -2,6 +2,16 @@
 #'
 #' @param fips the state abbreviation or fips code vector
 #' @return States Abbreviations or FIPs as FIP character strings
+#' @examples \donttest{
+#' library(tidyqwi)
+#'
+#' convert_fips(37)
+#' convert_fips("37")
+#' convert_fips("NC")
+#' convert_fips("nc")
+#'
+#' }
+#'
 #' @export
 converted_fips <- function(fips){
 

@@ -1,5 +1,13 @@
 #'@title add_qwi_labels
+#'@description This function add labels to a `qwi` object
 #'@param df an object with a class of `qwi`
+#'
+#'
+#' @examples \donttest{
+#'library(tidyqwi)
+#'labelled_nc <- add_qwi_labels(nc_qwi)
+#'
+#'}
 #'
 #'@export
 #'

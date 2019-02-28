@@ -49,4 +49,23 @@ The purpose of this function is to retrive firm information from the
 get_qwi(year = c(2010, 2011), states = c("01", "37"), apikey = "SECRETKEY")
 get_qwi(year = c(2010, 2011), industry_level = 3, states = c("01", "37"), apikey = "SECRETKEY")
 }
+\donttest{
+library(tidyqwi)
+nc_qwi <- get_qwi(years = "2010",
+               states = "11",
+               geography = "county",
+               apikey =  census_key,
+               quiet = TRUE, endpoint = "rh",
+               variables = c("sEmp", "Emp"), all_groups = FALSE,
+               industry_level = "2", processing = "sequential")
+
+qwi_multi_year <- get_qwi(years = c("2010", "2011", "2012"),
+               states = c("NC", "SC"),
+               geography = "county",
+               apikey =  census_key,
+               quiet = TRUE, endpoint = "rh",
+               variables = c("sEmp", "Emp"), all_groups = FALSE,
+               industry_level = "2", processing = "sequential")
+}
+
 }

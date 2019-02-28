@@ -1,5 +1,4 @@
 #' State Data (FIPS, Abbreviations, etc)
-#'
 #' @format a dataframe with 51 rows and 3 columns:
 #' \describe{
 #'   \item{name}{state name}

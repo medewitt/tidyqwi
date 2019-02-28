@@ -1,5 +1,6 @@
 #' Industry Labels
-#'
+#' @description These data are the industry labels specified by the
+#'     United States Census Bureau
 #' @format a dataframe with 433 rows and 3 columns:
 #' \describe{
 #'   \item{industry}{Industry Numeric Code}

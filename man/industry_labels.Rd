@@ -18,6 +18,7 @@
 industry_labels
 }
 \description{
-Industry Labels
+These data are the industry labels specified by the
+    United States Census Bureau
 }
 \keyword{datasets}

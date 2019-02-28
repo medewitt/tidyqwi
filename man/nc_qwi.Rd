@@ -3,11 +3,8 @@
 \docType{data}
 \name{nc_qwi}
 \alias{nc_qwi}
-\title{QWI Variable Names}
+\title{Example Data Set}
 \format{a dataframe with 3244 rows and 44 columns:}
-\source{
-\url{https://api.census.gov/data/timeseries/qwi/se/variables.html}
-}
 \usage{
 nc_qwi
 }

@@ -28,6 +28,26 @@
 #'@import httr
 #'@import utils
 #'@importFrom future plan
+#'
+#'@examples \donttest{
+#'library(tidyqwi)
+#'nc_qwi <- get_qwi(years = "2010",
+#'                states = "11",
+#'                geography = "county",
+#'                apikey =  census_key,
+#'                quiet = TRUE, endpoint = "rh",
+#'                variables = c("sEmp", "Emp"), all_groups = FALSE,
+#'                industry_level = "2", processing = "sequential")
+#'
+#'qwi_multi_year <- get_qwi(years = c("2010", "2011", "2012"),
+#'                states = c("NC", "SC"),
+#'                geography = "county",
+#'                apikey =  census_key,
+#'                quiet = TRUE, endpoint = "rh",
+#'                variables = c("sEmp", "Emp"), all_groups = FALSE,
+#'                industry_level = "2", processing = "sequential")
+#'}
+#'
 #'@export
 
 get_qwi <- function(years,

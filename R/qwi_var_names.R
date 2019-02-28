@@ -1,5 +1,6 @@
 #' QWI Variable Names
-#'
+#'@description These data represent the different variable types available
+#'    from the QWI API.
 #' @format a dataframe with 83 rows and 9 columns:
 #' \describe{
 #'   \item{name}{state name}

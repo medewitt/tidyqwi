@@ -24,6 +24,7 @@
 qwi_var_names
 }
 \description{
-QWI Variable Names
+These data represent the different variable types available
+   from the QWI API.
 }
 \keyword{datasets}

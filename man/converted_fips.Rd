@@ -15,3 +15,15 @@ States Abbreviations or FIPs as FIP character strings
 \description{
 A function to check if a valid state number or fips is passed
 }
+\examples{
+\donttest{
+library(tidyqwi)
+
+convert_fips(37)
+convert_fips("37")
+convert_fips("NC")
+convert_fips("nc")
+
+}
+
+}

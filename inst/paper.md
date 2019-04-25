@@ -32,3 +32,6 @@ The tbl_df object that is returned allows for labels to be added with the ``add_
 
 
 # References
+https://www.census.gov/data/developers/data-sets/qwi.html
+
+

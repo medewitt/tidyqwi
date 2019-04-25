@@ -16,7 +16,7 @@ authors:
 affiliations:
  - name: Wake Forest University
    index: 1
- - name: Eudaimonia Institute, Wake Forest University
+ - name: Eudaimonia Institute
    index: 2
 date: 31 October 2018
 bibliography: paper.bib

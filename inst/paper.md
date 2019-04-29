@@ -14,6 +14,7 @@ authors:
    orcid: 0000-0002-1269-5685
    affiliation: "1, 2"
  - name: Adam S. Hyde
+   ordid: 0000-0003-1205-0032
    affiliation: "1, 2"
 affiliations:
  - name: Wake Forest University

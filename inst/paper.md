@@ -27,7 +27,7 @@ bibliography: paper.bib
 
 # Summary
 
-The purpose of ``tidyqwi`` is to access the U.S. Census Bureau Quarterly Workforce Indicators(QWI) API and return a tidy data frame for further analysis. QWI is a longitudinal dataset across NAICS industry groups that contains quarterly measures of employment flows including employment, job creation/destruction, hires, separations, and turnover – as well as net employment growth among other local labor market indicators. The source data for the QWI is the Longitudinal Employer-Household Dynamics (LEHD) combined with input data from Unemployment Insurance Earnings Data (UI), Quarterly Census of Employment and Wages (QCEW), Business Dynamics Statistics (BDS), and demographic data sources (2000 and 2010 Census, American Community Survey, Social Security administrative records, and individual tax returns)(https://lehd.ces.census.gov/doc/QWI_101.pdf). The QWI has been currently employed to investigate the effects of minimum wages on employment flows (Dube et al. 2016), effects of NOx budget trading program (NBP) on labor markets in the manufacturing sector (Curtis 2018), and the effects of housing market price on labor market flow (Abowd and Vilhuber 2012). 
+The purpose of ``tidyqwi`` is to access the U.S. Census Bureau Quarterly Workforce Indicators(QWI) API and return a tidy data frame for further analysis. QWI is a longitudinal dataset across NAICS industry groups that contains quarterly measures of employment flows including employment, job creation/destruction, hires, separations, and turnover – as well as net employment growth among other local labor market indicators. The source data for the QWI is the Longitudinal Employer-Household Dynamics (LEHD) combined with input data from Unemployment Insurance Earnings Data (UI), Quarterly Census of Employment and Wages (QCEW), Business Dynamics Statistics (BDS), and demographic data sources (2000 and 2010 Census, American Community Survey, Social Security administrative records, and individual tax returns)(https://lehd.ces.census.gov/doc/QWI_101.pdf). The QWI has been currently employed to investigate the effects of minimum wages on employment flows (Dube, Lester, and Reich 2016), the effects of NOx budget trading program (NBP) on labor markets in the manufacturing sector (Curtis 2018), the effects of housing market price on labor market flows (Abowd and Vilhuber 2012), and the effects of creative destruction on the reported subjective well-being of individuals (Ahmadiani, Hyde, and Jackson 2019). 
 
 The QWI API has specific requirements including three endpoints of "Sex/Age," "Sex/Education," and "Race/Ethnicity" for data request. Additionally, a cardinality limit of 400,000 cells has been placed on an API query requests which makes calls for many industries and associated cross-tabulations of different endpoints challenging. API calls allow for collecting data at smaller geographical levels (i.e., metropolitan/micropolitan areas and county levels) that could make the data collection tedious if it gets to 400,000 cells limit. These aspects make retrieving multi-state, multi-industry data difficult and time-consuming. 
 
@@ -37,7 +37,10 @@ The ``tbl_df`` object that is returned allows for labels to be added with the ``
 
 
 # References
+
 Abowd, J. M., & Vilhuber, L. (2012). Did the housing price bubble clobber local labor market job and worker flows when it burst?. American Economic Review, 102(3), 589-93.
+
+Ahmadiani, A., Hyde, A. S., & Jackson, J. J. (2019). Creative destruction, job reallocation, and subjective well-being. Working paper. 
 
 Curtis, E. M. (2018). Who loses under cap-and-trade programs? the labor market effects of the nox budget trading program. Review of Economics and Statistics, 100(1), 151-166.
 

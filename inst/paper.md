@@ -27,7 +27,9 @@ bibliography: paper.bib
 
 # Summary
 
-The purpose of ``tidyqwi`` is to access the U.S. Census Bureau Quarterly Workforce Indicators(QWI) API and return a tidy data frame for further analysis. QWI is a longitudinal dataset across NAICS industry groups that contains quarterly measures of employment flows including employment, job creation/destruction, hires, and separations among other local labor market indicators. The QWI API has specific requirements including three endpoints of "Sex/Age," "Sex/Education," and "Race/Ethnicity" for data request. Additionally, a cardinality limit of 400,000 cells has been placed on an API query requests which makes calls for many industries and associated cross-tabulations of different endpoints challenging. API calls allow for collecting data at smaller geographical levels (i.e., metropolitan/micropolitan areas and county levels) that could make the data collection tedious if it gets to 400,000 cells limit. These aspects make retrieving multi-state, multi-industry data difficult and time-consuming.
+The purpose of ``tidyqwi`` is to access the U.S. Census Bureau Quarterly Workforce Indicators(QWI) API and return a tidy data frame for further analysis. QWI is a longitudinal dataset across NAICS industry groups that contains quarterly measures of employment flows including employment, job creation/destruction, hires, separations, and turnover – as well as net employment growth among other local labor market indicators. The source data for the QWI is the Longitudinal Employer-Household Dynamics (LEHD) combined with input data from Unemployment Insurance Earnings Data (UI), Quarterly Census of Employment and Wages (QCEW), Business Dynamics Statistics (BDS), and demographic data sources (2000 and 2010 Census, American Community Survey, Social Security administrative records, and individual tax returns)(https://lehd.ces.census.gov/doc/QWI_101.pdf). The QWI has been currently employed to investigate the effects of minimum wages on employment flows (Dube et al. 2016), effects of NOx budget trading program (NBP) on labor markets in the manufacturing sector (Curtis 2018), and the effects of housing market price on labor market flow (Abowd and Vilhuber 2012). 
+
+The QWI API has specific requirements including three endpoints of "Sex/Age," "Sex/Education," and "Race/Ethnicity" for data request. Additionally, a cardinality limit of 400,000 cells has been placed on an API query requests which makes calls for many industries and associated cross-tabulations of different endpoints challenging. API calls allow for collecting data at smaller geographical levels (i.e., metropolitan/micropolitan areas and county levels) that could make the data collection tedious if it gets to 400,000 cells limit. These aspects make retrieving multi-state, multi-industry data difficult and time-consuming. 
 
 Taking inspiration from tidycensus [@tidycensus] which has provided a robust method for accessing US Census data from the decennial census and American Community Survey, ``tidyqwi`` provides a friendly way to interface with the US Census' available API for Quarterly Workforce Indicators. ``Tidyqwi`` provides a way to easily access the US Census' API with multi-state calls, over multiple years, variables and cross-tabulations. The ``tidy_qwi`` function allows the user to specify key fields for retrieval (years of interest, quarters of interest, variables of interest, industry levels (NAICS 2-digits, 3-digit, and 4-digit codes), specific states, county/ CBSA level, and the cross tabulation among other fields). Relying heavily on @httr and @jsonlite multiple API calls are constructed structured following the [API documentation](https://www.census.gov/data/developers/data-sets/qwi.html)[@census-qwi]. These calls are then submitted to the US Census Bureau using the user's API Key (which can be requested from the US Census Bureau [here](https://api.census.gov/data/key_signup.html)). Internal to the ``get_qwi`` function these multiple returned calls are aggregated into a single ``tbl_df`` object with potential missing data from the US Census represented as ``NA``.
 
@@ -35,6 +37,14 @@ The ``tbl_df`` object that is returned allows for labels to be added with the ``
 
 
 # References
+Abowd, J. M., & Vilhuber, L. (2012). Did the housing price bubble clobber local labor market job and worker flows when it burst?. American Economic Review, 102(3), 589-93.
+
+Curtis, E. M. (2018). Who loses under cap-and-trade programs? the labor market effects of the nox budget trading program. Review of Economics and Statistics, 100(1), 151-166.
+
+Dube, A., Lester, T. W., & Reich, M. (2016). Minimum wage shocks, employment flows, and labor market frictions. Journal of Labor Economics, 34(3), 663-704.
+
+
+
 
 
 

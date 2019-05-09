@@ -1,6 +1,6 @@
 Package: tidyqwi
 Title: A Convenient API for Accessing United States Census Bureau's Quarterly Workforce Indicator
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person(given = "Michael",
            family = "DeWitt",
@@ -12,10 +12,11 @@ Authors@R: c(
            role = c("aut"),
            email = "ahmadim@wfu.edu",
            comment = c(ORCID = "0000-0002-1269-5685")),    
-    person(given = "Adam",
+    person(given = "Adam S.",
            family = "Hyde",
            role = c("aut"),
-           email = "hydeas@wfu.edu")
+           email = "hydeas@wfu.edu",
+           comment = c(ORCID = "0000-0003-1205-0032"))
            )
 Maintainer: Michael DeWitt <me.dewitt.jr@gmail.com>
 Description: The purpose of this package is to access the 

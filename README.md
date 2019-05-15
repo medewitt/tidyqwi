@@ -1,11 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- badges here -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/tidyqwi)](https://cran.r-project.org/package=tidyqwi)
 [![Travis build
 status](https://travis-ci.org/medewitt/tidyqwi.svg?branch=master)](https://travis-ci.org/medewitt/tidyqwi)
 [![Coverage
 status](https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg)](https://codecov.io/github/medewitt/tidyqwi?branch=master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![](https://cranlogs.r-pkg.org/badges/tidyqwi)](https://cran.r-project.org/package=tidyqwi)
+
+<!-- end badges -->
 
 # tidyqwi
 
@@ -34,7 +41,7 @@ nc_qwi <- get_qwi(years = "2010",
                   states = "11", 
                   geography = "county", 
                   apikey =  census_key, 
-                  quiet = TRUE, endpoint = "rh",
+                  endpoint = "rh",
                   variables = c("sEmp", "Emp"), all_groups = FALSE,
                   industry_level = "2", processing = "multiprocess")
 ```
@@ -63,6 +70,11 @@ labelled_nc <- add_qwi_labels(nc_qwi)
 
 ``` r
 Hmisc::describe(labelled_nc$Emp)
+#> Registered S3 methods overwritten by 'ggplot2':
+#>   method         from 
+#>   [.quosures     rlang
+#>   c.quosures     rlang
+#>   print.quosures rlang
 #> labelled_nc$Emp : Beginning-of-Quarter Employment: Counts 
 #>        n  missing distinct     Info     Mean      Gmd      .05      .10 
 #>     7345      411     2851        1     2018     3129       24       40 
@@ -93,7 +105,8 @@ labelled_nc %>%
   labs(
     title = "Quarterly Workforce Indicators for Forsyth County",
     subtitle = attributes(labelled_nc$Emp)$label,
-    caption = "Data: US Census Bureau QWI"
+    caption = "Data: US Census Bureau QWI",
+    x = "Month"
   )+
   theme_minimal()
 ```

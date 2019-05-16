@@ -38,13 +38,11 @@ The ``tbl_df`` object that is returned allows for labels to be added with the ``
 
 # References
 
-Abowd, J. M., & Vilhuber, L. (2012). Did the housing price bubble clobber local labor market job and worker flows when it burst?. American Economic Review, 102(3), 589-93.
+[@abowd2012did.bib]
+[@ahmadiani2019.bib]
+[@curtis2018loses.bib]
+[@dube2016minimum.bib]
 
-Ahmadiani, A., Hyde, A. S., & Jackson, J. J. (2019). Creative destruction, job reallocation, and subjective well-being. Working paper. 
-
-Curtis, E. M. (2018). Who loses under cap-and-trade programs? the labor market effects of the nox budget trading program. Review of Economics and Statistics, 100(1), 151-166.
-
-Dube, A., Lester, T. W., & Reich, M. (2016). Minimum wage shocks, employment flows, and labor market frictions. Journal of Labor Economics, 34(3), 663-704.
 
 
 

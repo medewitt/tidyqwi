@@ -39,7 +39,7 @@ The ``tbl_df`` object that is returned allows for labels to be added with the ``
 # References
 
 [@abowd2012did.bib]
-[@ahmadiani2019.bib]
+[@ahmadiani2019creative.bib]
 [@curtis2018loses.bib]
 [@dube2016minimum.bib]
 

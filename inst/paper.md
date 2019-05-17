@@ -1,5 +1,5 @@
 ---
-title: 'tidyqwi: A Tidy Approach to Accessing The US Census Bureau's Quarterly Workforce Indicators'
+title: "tidyqwi: A Tidy Approach to Accessing The US Census Bureau's Quarterly Workforce Indicators"
 tags:
   - r
   - national statistics

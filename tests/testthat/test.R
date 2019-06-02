@@ -35,7 +35,7 @@ test_that("Catch for geography", {
                "Please enter a county or cbsa in the `geography` field")
 })
 
-test_that("Catch for geography", {
+test_that("Catch for seasonal adjustment", {
   expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "MYKEY", seasonadj = "r"),
                "Please specify a valid seasonal adjustment parameter of `S` or `U`")
 })

@@ -1,6 +1,6 @@
 Package: tidyqwi
 Title: A Convenient API for Accessing United States Census Bureau's Quarterly Workforce Indicator
-Version: 0.1.1
+Version: 0.1.0
 Authors@R: c(
     person(given = "Michael",
            family = "DeWitt",

@@ -10,7 +10,7 @@ status](https://travis-ci.org/medewitt/tidyqwi.svg?branch=master)](https://travi
 [![Coverage
 status](https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg)](https://codecov.io/github/medewitt/tidyqwi?branch=master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![](https://cranlogs.r-pkg.org/badges/tidyqwi)](https://cran.r-project.org/package=tidyqwi)
+[![](https://cranlogs.r-pkg.org/badges/tidyqwi)](https://cran.r-project.org/package=tidyqwi)[![status](http://joss.theoj.org/papers/96bac49d6912cea4d191abff922d7c2e/status.svg)](http://joss.theoj.org/papers/96bac49d6912cea4d191abff922d7c2e)
 
 <!-- end badges -->
 
@@ -28,9 +28,19 @@ This is a work in progress\!
 
 ## Installation
 
+Install via CRAN with:
+
 ``` r
-devtools::install_github("medewitt/tidyqwi")
+install.packages("tidyqwi")
 ```
+
+Or the development version at:
+
+``` r
+remotes::install_github("medewitt/tidyqwi")
+```
+
+## Use
 
 After installation you can load and retrieve the desired data\!
 
@@ -70,11 +80,6 @@ labelled_nc <- add_qwi_labels(nc_qwi)
 
 ``` r
 Hmisc::describe(labelled_nc$Emp)
-#> Registered S3 methods overwritten by 'ggplot2':
-#>   method         from 
-#>   [.quosures     rlang
-#>   c.quosures     rlang
-#>   print.quosures rlang
 #> labelled_nc$Emp : Beginning-of-Quarter Employment: Counts 
 #>        n  missing distinct     Info     Mean      Gmd      .05      .10 
 #>     7345      411     2851        1     2018     3129       24       40 
@@ -111,7 +116,7 @@ labelled_nc %>%
   theme_minimal()
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 Please note that the ‘tidyqwi’ project is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,

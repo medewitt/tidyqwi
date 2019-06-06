@@ -82,7 +82,9 @@
     
     
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges here -->
 
+<!-- end badges -->
 <div id="tidyqwi" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#tidyqwi" class="anchor"></a>tidyqwi</h1></div>
@@ -91,63 +93,71 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"medewitt/tidyqwi"</span>)</a></code></pre></div>
+<p>Install via CRAN with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"tidyqwi"</span>)</a></code></pre></div>
+<p>Or the development version at:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"medewitt/tidyqwi"</span>)</a></code></pre></div>
+</div>
+<div id="use" class="section level2">
+<h2 class="hasAnchor">
+<a href="#use" class="anchor"></a>Use</h2>
 <p>After installation you can load and retrieve the desired data!</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyqwi)</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3">nc_qwi &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_qwi.html">get_qwi</a></span>(<span class="dt">years =</span> <span class="st">"2010"</span>, </a>
-<a class="sourceLine" id="cb2-4" title="4">                  <span class="dt">states =</span> <span class="st">"11"</span>, </a>
-<a class="sourceLine" id="cb2-5" title="5">                  <span class="dt">geography =</span> <span class="st">"county"</span>, </a>
-<a class="sourceLine" id="cb2-6" title="6">                  <span class="dt">apikey =</span>  census_key, </a>
-<a class="sourceLine" id="cb2-7" title="7">                  <span class="dt">quiet =</span> <span class="ot">TRUE</span>, <span class="dt">endpoint =</span> <span class="st">"rh"</span>,</a>
-<a class="sourceLine" id="cb2-8" title="8">                  <span class="dt">variables =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"sEmp"</span>, <span class="st">"Emp"</span>), <span class="dt">all_groups =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb2-9" title="9">                  <span class="dt">industry_level =</span> <span class="st">"2"</span>, <span class="dt">processing =</span> <span class="st">"multiprocess"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyqwi)</a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3">nc_qwi &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_qwi.html">get_qwi</a></span>(<span class="dt">years =</span> <span class="st">"2010"</span>, </a>
+<a class="sourceLine" id="cb3-4" title="4">                  <span class="dt">states =</span> <span class="st">"11"</span>, </a>
+<a class="sourceLine" id="cb3-5" title="5">                  <span class="dt">geography =</span> <span class="st">"county"</span>, </a>
+<a class="sourceLine" id="cb3-6" title="6">                  <span class="dt">apikey =</span>  census_key, </a>
+<a class="sourceLine" id="cb3-7" title="7">                  <span class="dt">endpoint =</span> <span class="st">"rh"</span>,</a>
+<a class="sourceLine" id="cb3-8" title="8">                  <span class="dt">variables =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"sEmp"</span>, <span class="st">"Emp"</span>), <span class="dt">all_groups =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb3-9" title="9">                  <span class="dt">industry_level =</span> <span class="st">"2"</span>, <span class="dt">processing =</span> <span class="st">"multiprocess"</span>)</a></code></pre></div>
 <p>And look at your data:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(nc_qwi)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt; # A tibble: 6 x 12</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt;   year  quarter agegrp sex   ownercode seasonadj industry state county</span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt; 1 2010  1       A00    0     A00       U         11       37    001   </span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; 2 2010  1       A00    0     A00       U         11       37    003   </span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt; 3 2010  1       A00    0     A00       U         11       37    005   </span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt; 4 2010  1       A00    0     A00       U         11       37    007   </span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt; 5 2010  1       A00    0     A00       U         11       37    009   </span></a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt; 6 2010  1       A00    0     A00       U         11       37    011   </span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt; # ... with 3 more variables: Emp &lt;chr&gt;, sEmp &lt;chr&gt;, year_time &lt;date&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(nc_qwi)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; # A tibble: 6 x 12</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt;   year  quarter agegrp sex   ownercode seasonadj industry state county</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; </span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; 1 2010  1       A00    0     A00       U         11       37    001   </span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; 2 2010  1       A00    0     A00       U         11       37    003   </span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; 3 2010  1       A00    0     A00       U         11       37    005   </span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt; 4 2010  1       A00    0     A00       U         11       37    007   </span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt; 5 2010  1       A00    0     A00       U         11       37    009   </span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt; 6 2010  1       A00    0     A00       U         11       37    011   </span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt; # ... with 3 more variables: Emp &lt;chr&gt;, sEmp &lt;chr&gt;, year_time &lt;date&gt;</span></a></code></pre></div>
 <p>And there are labels added if desired</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">labelled_nc &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_qwi_labels.html">add_qwi_labels</a></span>(nc_qwi)</a></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">Hmisc<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/Hmisc/topics/describe">describe</a></span>(labelled_nc<span class="op">$</span>Emp)</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="co">#&gt; labelled_nc$Emp : Beginning-of-Quarter Employment: Counts </span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt;        n  missing distinct     Info     Mean      Gmd      .05      .10 </span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt;     7345      411     2851        1     2018     3129       24       40 </span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;      .25      .50      .75      .90      .95 </span></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;      132      448     1550     4355     8099 </span></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt; lowest :     0     1     3     4     5, highest: 65243 81884 82723 84038 84674</span></a></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt;     filter, lag</span></a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
-<a class="sourceLine" id="cb6-11" title="11"></a>
-<a class="sourceLine" id="cb6-12" title="12">labelled_nc <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-13" title="13"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(county <span class="op">==</span><span class="st"> "067"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-14" title="14"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(year_time, Emp, <span class="dt">color =</span> county))<span class="op">+</span></a>
-<a class="sourceLine" id="cb6-15" title="15"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb6-16" title="16"><span class="st">  </span><span class="kw">scale_y_log10</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb6-17" title="17"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>industry)<span class="op">+</span></a>
-<a class="sourceLine" id="cb6-18" title="18"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb6-19" title="19">    <span class="dt">title =</span> <span class="st">"Quarterly Workforce Indicators for Forsyth County"</span>,</a>
-<a class="sourceLine" id="cb6-20" title="20">    <span class="dt">subtitle =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/attributes">attributes</a></span>(labelled_nc<span class="op">$</span>Emp)<span class="op">$</span>label,</a>
-<a class="sourceLine" id="cb6-21" title="21">    <span class="dt">caption =</span> <span class="st">"Data: US Census Bureau QWI"</span></a>
-<a class="sourceLine" id="cb6-22" title="22">  )<span class="op">+</span></a>
-<a class="sourceLine" id="cb6-23" title="23"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-7-1.png" width="100%"></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">labelled_nc &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_qwi_labels.html">add_qwi_labels</a></span>(nc_qwi)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">Hmisc<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/Hmisc/topics/describe">describe</a></span>(labelled_nc<span class="op">$</span>Emp)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co">#&gt; labelled_nc$Emp : Beginning-of-Quarter Employment: Counts </span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt;        n  missing distinct     Info     Mean      Gmd      .05      .10 </span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt;     7345      411     2851        1     2018     3129       24       40 </span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;      .25      .50      .75      .90      .95 </span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt;      132      448     1550     4355     8099 </span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; lowest :     0     1     3     4     5, highest: 65243 81884 82723 84038 84674</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="co">#&gt;     filter, lag</span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
+<a class="sourceLine" id="cb7-11" title="11"></a>
+<a class="sourceLine" id="cb7-12" title="12">labelled_nc <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-13" title="13"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(county <span class="op">==</span><span class="st"> "067"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-14" title="14"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(year_time, Emp, <span class="dt">color =</span> county))<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-15" title="15"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-16" title="16"><span class="st">  </span><span class="kw">scale_y_log10</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-17" title="17"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>industry)<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-18" title="18"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb7-19" title="19">    <span class="dt">title =</span> <span class="st">"Quarterly Workforce Indicators for Forsyth County"</span>,</a>
+<a class="sourceLine" id="cb7-20" title="20">    <span class="dt">subtitle =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/attributes">attributes</a></span>(labelled_nc<span class="op">$</span>Emp)<span class="op">$</span>label,</a>
+<a class="sourceLine" id="cb7-21" title="21">    <span class="dt">caption =</span> <span class="st">"Data: US Census Bureau QWI"</span>,</a>
+<a class="sourceLine" id="cb7-22" title="22">    <span class="dt">x =</span> <span class="st">"Month"</span></a>
+<a class="sourceLine" id="cb7-23" title="23">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-24" title="24"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="100%"></p>
 <p>Please note that the ‘tidyqwi’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
@@ -157,6 +167,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=tidyqwi">https://​cloud.r-project.org/​package=tidyqwi</a>
+</li>
 <li>Report a bug at <br><a href="https://github.com/medewitt/tidyqwi/issues">https://​github.com/​medewitt/​tidyqwi/​issues</a>
 </li>
 </ul>
@@ -164,8 +176,9 @@
 <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li>
+<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
 <div class="developers">
@@ -173,16 +186,19 @@
 <ul class="list-unstyled">
 <li>Michael DeWitt <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8940-1967" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
 <li>Mona Ahmadiani <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1269-5685" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Adam Hyde <br><small class="roles"> Author </small>  </li>
+<li>Adam S. Hyde <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-1205-0032" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
 </ul>
 </div>
 
       <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=tidyqwi"><img src="https://www.r-pkg.org/badges/version/tidyqwi" alt="CRAN status"></a></li>
 <li><a href="https://travis-ci.org/medewitt/tidyqwi"><img src="https://travis-ci.org/medewitt/tidyqwi.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://codecov.io/github/medewitt/tidyqwi?branch=master"><img src="https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></li>
+<li><a href="https://cran.r-project.org/package=tidyqwi"><img src="https://cranlogs.r-pkg.org/badges/tidyqwi"></a></li>
+<li><a href="http://joss.theoj.org/papers/96bac49d6912cea4d191abff922d7c2e"><img src="http://joss.theoj.org/papers/96bac49d6912cea4d191abff922d7c2e/status.svg" alt="status"></a></li>
 </ul>
 </div>
 </div>
@@ -191,7 +207,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Michael DeWitt, Mona Ahmadiani, Adam Hyde.</p>
+  <p>Developed by Michael DeWitt, Mona Ahmadiani, Adam S. Hyde.</p>
 </div>
 
 <div class="pkgdown">

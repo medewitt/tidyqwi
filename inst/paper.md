@@ -7,7 +7,7 @@ tags:
   - Economics
   - Econometrics
 authors:
- - name: Michael E DeWitt, Jr
+ - name: Michael E. DeWitt Jr
    orcid: 0000-0001-8940-1967
    affiliation: 1
  - name: Mona Ahmadiani

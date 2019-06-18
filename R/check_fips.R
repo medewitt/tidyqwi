@@ -20,8 +20,7 @@ converted_fips <- function(fips){
   if(sum(is.na(suppressWarnings(as.numeric(fips)))) >0){
     # Its a string. Guess is that it is state code.
 
-    converted_abbreviation <- stringr::str_trim(fips) %>%
-      stringr::str_to_upper()
+    converted_abbreviation <- stringr::str_to_upper(stringr::str_trim(fips))
 
     fips <- dplyr::filter( state_info,
                            state_info$state_abreviation %in% converted_abbreviation)

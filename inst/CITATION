@@ -1,0 +1,21 @@
+citHeader("To cite tidyqwi in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "tidyqwi: A Tidy Approach to Accessing The US Census Bureau’s Quarterly Workforce Indicators",
+  author   = c(person("Michael E.", "DeWitt"),
+               person("Mona", "Ahmadiani"),
+               person("Adam S.", "Hyde")),
+  journal  = "Journal of Open Source Software",
+  year     = "2019",
+  volume   = "4",
+  number   = "38",
+  pages    = "1462",
+  url      = "http://joss.theoj.org/papers/10.21105/joss.01462",
+  textVersion = paste("DeWitt et al., (2019).",
+                      "tidyqwi: A Tidy Approach to Accessing The US Census Bureau's Quarterly Workforce Indicators.",
+                      "Journal of Open Source Software, 4(38), 1462,",
+                      "https://doi.org/10.21105/joss.01462"
+
+  )
+)

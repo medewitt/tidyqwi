@@ -10,13 +10,13 @@ status](https://travis-ci.org/medewitt/tidyqwi.svg?branch=master)](https://travi
 [![Coverage
 status](https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg)](https://codecov.io/github/medewitt/tidyqwi?branch=master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![](https://cranlogs.r-pkg.org/badges/tidyqwi)](https://cran.r-project.org/package=tidyqwi)[![status](http://joss.theoj.org/papers/96bac49d6912cea4d191abff922d7c2e/status.svg)](http://joss.theoj.org/papers/96bac49d6912cea4d191abff922d7c2e)
+[![](https://cranlogs.r-pkg.org/badges/tidyqwi)](https://cran.r-project.org/package=tidyqwi)[![DOI](http://joss.theoj.org/papers/10.21105/joss.01462/status.svg)](https://doi.org/10.21105/joss.01462)
 
 <!-- end badges -->
 
 # tidyqwi
 
-The goal of tidyqwi is to make accessing the US Census Bureau’s
+The goal of `tidyqwi` is to make accessing the US Census Bureau’s
 *Quarterly Workforce Indicators* easier in a tidy format. This package
 allows a user to specify the years and states of interest as well as
 some of the additional parameters (desired cross tabs, MSA vs county

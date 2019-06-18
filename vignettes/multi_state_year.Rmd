@@ -24,7 +24,7 @@ Sometimes one may want to collect data from multiple states over multiple years.
 library(future)
 library(tidyqwi)
 library(purrr)
-library (plyr)
+library (tidyverse)
 ```
 
 Then we can create the different combinations of year and state in order to submit to `tidyqwi.`
@@ -64,7 +64,7 @@ qwi_data <- map2(arguments$x, arguments$y, ~
 After this function returns out values we can collapse these data into a single data set.
 
 ```{r eval = FALSE}
-qwi_data <- ldply (qwi_data, data.frame)
+qwi_data <- purrr::map_dfr(qwi_data, as_tibble)
 
 ```
 

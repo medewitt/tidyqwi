@@ -1,8 +1,8 @@
 ## Release Summary (Resubmission)
 This is a minor release. (v0.1.0 to v0.1.1)
 
-* Resolved previous notes from CRAN status check  
-* Resolved failed tests during build  
+
+* fully specified link in README.Md
 
 ## Test environments
 * local OS X install, R 3.6

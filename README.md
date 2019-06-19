@@ -119,5 +119,6 @@ labelled_nc %>%
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 Please note that the ‘tidyqwi’ project is released with a [Contributor
-Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
-you agree to abide by its terms.
+Code of
+Conduct](https://github.com/medewitt/tidyqwi/blob/master/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.

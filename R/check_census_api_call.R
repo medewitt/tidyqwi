@@ -26,7 +26,7 @@ check_census_api_call <- function(call){
 
   returned_call <- httr::content(call, as = "text", encoding = "UTF-8")
 
-  if( show_condition(xml2::as_xml_document(returned_call)) !="error"){
+  if( show_condition(xml2::as_xml_document(returned_call)["node"]) !="error"){
     returned_call %>%
       xml2::as_xml_document()%>%
       xml2::xml_find_all("body") %>%

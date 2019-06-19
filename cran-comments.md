@@ -1,9 +1,8 @@
-## Release Summary
+## Release Summary (Resubmission)
 This is a minor release. (v0.1.0 to v0.1.1)
 
-* Clarification of some error messages returned from the US Census  
-* Added author ORCID numbers  
-* Updated CITATION with paper information  
+* Resolved previous notes from CRAN status check  
+* Resolved failed tests during build  
 
 ## Test environments
 * local OS X install, R 3.6

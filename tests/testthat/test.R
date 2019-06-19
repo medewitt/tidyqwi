@@ -42,6 +42,7 @@ test_that("Catch for seasonal adjustment", {
 
 # I need to rethink through this test
 test_that("Valid API Key", {
+  skip_on_cran()
   expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "A"),
                "A valid key must be included with each data API request. You included a key with this request, however, it is not valid. Please check your key and try again.If you do not have a key you my sign up for one here. ")
 })

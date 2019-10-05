@@ -7,7 +7,8 @@
 status](https://www.r-pkg.org/badges/version/tidyqwi)](https://cran.r-project.org/package=tidyqwi)
 [![Travis build
 status](https://travis-ci.org/medewitt/tidyqwi.svg?branch=master)](https://travis-ci.org/medewitt/tidyqwi)
-[![Coverage
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/medewitt/tidyqwi?branch=master&svg=true)](https://ci.appveyor.com/project/medewitt/tidyqwi)[![Coverage
 status](https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg)](https://codecov.io/github/medewitt/tidyqwi?branch=master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![](https://cranlogs.r-pkg.org/badges/tidyqwi)](https://cran.r-project.org/package=tidyqwi)[![DOI](http://joss.theoj.org/papers/10.21105/joss.01462/status.svg)](https://doi.org/10.21105/joss.01462)
@@ -69,7 +70,7 @@ head(nc_qwi)
 #> 4 2010  1       A00    0     A00       U         11       37    007   
 #> 5 2010  1       A00    0     A00       U         11       37    009   
 #> 6 2010  1       A00    0     A00       U         11       37    011   
-#> # ... with 3 more variables: Emp <chr>, sEmp <chr>, year_time <date>
+#> # … with 3 more variables: Emp <chr>, sEmp <chr>, year_time <date>
 ```
 
 And there are labels added if desired

@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gathering QWI Data Over Several Years for Multiple States • tidyqwi</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Gathering QWI Data Over Several Years for Multiple States">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -30,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyqwi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -70,13 +71,14 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Gathering QWI Data Over Several Years for Multiple States</h1>
                         <h4 class="author">Mona Ahmadiani</h4>
             
-            <h4 class="date">2019-06-19</h4>
+            <h4 class="date">2020-03-21</h4>
       
       
       <div class="hidden name"><code>multi_state_year.Rmd</code></div>
@@ -89,43 +91,44 @@
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
 <p>Sometimes one may want to collect data from multiple states over multiple years. To do this we recommend loading the following libraries:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(future)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyqwi)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(purrr)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span> (tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(future)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyqwi)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(purrr)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> (tidyverse)</a></code></pre></div>
 <p>Then we can create the different combinations of year and state in order to submit to <code>tidyqwi.</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">year &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"2008"</span>, <span class="st">"2009"</span>, <span class="st">"2010"</span>,<span class="st">"2011"</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2">state &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"01"</span>,<span class="st">"02"</span>,<span class="st">"04"</span>,<span class="st">"05"</span>,<span class="st">"06"</span>,<span class="st">"08"</span>,<span class="st">"09"</span>,<span class="st">"10"</span>,<span class="st">"11"</span>,<span class="st">"12"</span>,</a>
-<a class="sourceLine" id="cb2-3" title="3">           <span class="st">"13"</span>,<span class="st">"15"</span>,<span class="st">"16"</span>,<span class="st">"17"</span>,<span class="st">"18"</span>,<span class="st">"19"</span>,<span class="st">"20"</span>,<span class="st">"21"</span>,<span class="st">"22"</span>,<span class="st">"23"</span>,</a>
-<a class="sourceLine" id="cb2-4" title="4">           <span class="st">"24"</span>,<span class="st">"25"</span>,<span class="st">"26"</span>,<span class="st">"27"</span>,<span class="st">"28"</span>,<span class="st">"29"</span>,<span class="st">"30"</span>,<span class="st">"31"</span>,<span class="st">"32"</span>,<span class="st">"33"</span>,</a>
-<a class="sourceLine" id="cb2-5" title="5">           <span class="st">"34"</span>,<span class="st">"35"</span>,<span class="st">"36"</span>,<span class="st">"37"</span>,<span class="st">"38"</span>,<span class="st">"39"</span>,<span class="st">"40"</span>,<span class="st">"41"</span>,<span class="st">"42"</span>,<span class="st">"44"</span>,</a>
-<a class="sourceLine" id="cb2-6" title="6">           <span class="st">"45"</span>,<span class="st">"46"</span>,<span class="st">"47"</span>,<span class="st">"48"</span>,<span class="st">"49"</span>,<span class="st">"50"</span>,<span class="st">"51"</span>,<span class="st">"53"</span>,<span class="st">"54"</span>,<span class="st">"55"</span>,</a>
-<a class="sourceLine" id="cb2-7" title="7">           <span class="st">"56"</span>)</a>
-<a class="sourceLine" id="cb2-8" title="8"></a>
-<a class="sourceLine" id="cb2-9" title="9">argList &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">x =</span> state, <span class="dt">y =</span> year)</a>
-<a class="sourceLine" id="cb2-10" title="10"></a>
-<a class="sourceLine" id="cb2-11" title="11">arguments &lt;-<span class="st"> </span><span class="kw">cross_df</span>(argList)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">year &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"2008"</span>, <span class="st">"2009"</span>, <span class="st">"2010"</span>,<span class="st">"2011"</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">state &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"01"</span>,<span class="st">"02"</span>,<span class="st">"04"</span>,<span class="st">"05"</span>,<span class="st">"06"</span>,<span class="st">"08"</span>,<span class="st">"09"</span>,<span class="st">"10"</span>,<span class="st">"11"</span>,<span class="st">"12"</span>,</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">           <span class="st">"13"</span>,<span class="st">"15"</span>,<span class="st">"16"</span>,<span class="st">"17"</span>,<span class="st">"18"</span>,<span class="st">"19"</span>,<span class="st">"20"</span>,<span class="st">"21"</span>,<span class="st">"22"</span>,<span class="st">"23"</span>,</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">           <span class="st">"24"</span>,<span class="st">"25"</span>,<span class="st">"26"</span>,<span class="st">"27"</span>,<span class="st">"28"</span>,<span class="st">"29"</span>,<span class="st">"30"</span>,<span class="st">"31"</span>,<span class="st">"32"</span>,<span class="st">"33"</span>,</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">           <span class="st">"34"</span>,<span class="st">"35"</span>,<span class="st">"36"</span>,<span class="st">"37"</span>,<span class="st">"38"</span>,<span class="st">"39"</span>,<span class="st">"40"</span>,<span class="st">"41"</span>,<span class="st">"42"</span>,<span class="st">"44"</span>,</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">           <span class="st">"45"</span>,<span class="st">"46"</span>,<span class="st">"47"</span>,<span class="st">"48"</span>,<span class="st">"49"</span>,<span class="st">"50"</span>,<span class="st">"51"</span>,<span class="st">"53"</span>,<span class="st">"54"</span>,<span class="st">"55"</span>,</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">           <span class="st">"56"</span>)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">argList &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">x =</span> state, <span class="dt">y =</span> year)</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">arguments &lt;-<span class="st"> </span><span class="kw"><a href="https://purrr.tidyverse.org/reference/cross.html">cross_df</a></span>(argList)</a></code></pre></div>
 <p>Using the multiple processing function we can submit the following:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">plan</span>(<span class="st">"multiprocess"</span>)</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3">qwi_data &lt;-<span class="st"> </span><span class="kw">map2</span>(arguments<span class="op">$</span>x, arguments<span class="op">$</span>y, <span class="op">~</span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="st">                  </span><span class="kw"><a href="../reference/get_qwi.html">get_qwi</a></span>(</a>
-<a class="sourceLine" id="cb3-5" title="5">                    <span class="dt">states =</span> .x,</a>
-<a class="sourceLine" id="cb3-6" title="6">                    <span class="dt">years  =</span> .y ,</a>
-<a class="sourceLine" id="cb3-7" title="7">                    <span class="dt">industry_level =</span> <span class="st">"2"</span>,</a>
-<a class="sourceLine" id="cb3-8" title="8">                    <span class="dt">all_groups =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb3-9" title="9">                    <span class="dt">endpoint =</span> <span class="st">"se"</span>,</a>
-<a class="sourceLine" id="cb3-10" title="10">                    <span class="dt">geography =</span> <span class="st">"cbsa"</span>,</a>
-<a class="sourceLine" id="cb3-11" title="11">                    <span class="dt">processing =</span> <span class="st">"multiprocess"</span>,</a>
-<a class="sourceLine" id="cb3-12" title="12">                    <span class="dt">apikey =</span> APIkey))</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/future/man/plan.html">plan</a></span>(<span class="st">"multiprocess"</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">qwi_data &lt;-<span class="st"> </span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map2.html">map2</a></span>(arguments<span class="op">$</span>x, arguments<span class="op">$</span>y, <span class="op">~</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">                  </span><span class="kw"><a href="../reference/get_qwi.html">get_qwi</a></span>(</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">                    <span class="dt">states =</span> .x,</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">                    <span class="dt">years  =</span> .y ,</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">                    <span class="dt">industry_level =</span> <span class="st">"2"</span>,</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">                    <span class="dt">all_groups =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">                    <span class="dt">endpoint =</span> <span class="st">"se"</span>,</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">                    <span class="dt">geography =</span> <span class="st">"cbsa"</span>,</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">                    <span class="dt">processing =</span> <span class="st">"multiprocess"</span>,</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">                    <span class="dt">apikey =</span> APIkey))</a></code></pre></div>
 <p>After this function returns out values we can collapse these data into a single data set.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">qwi_data &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span>(qwi_data, as_tibble)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">qwi_data &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span>(qwi_data, as_tibble)</a></code></pre></div>
 <p>And then add the labels for our variables if desired.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">qwi_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_qwi_labels.html">add_qwi_labels</a></span>(qwi_data)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">qwi_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_qwi_labels.html">add_qwi_labels</a></span>(qwi_data)</a></code></pre></div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -138,17 +141,20 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Michael DeWitt, Mona Ahmadiani, Adam S. Hyde.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

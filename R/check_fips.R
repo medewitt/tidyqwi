@@ -1,5 +1,8 @@
 #' A function to check if a valid state number or fips is passed
 #'
+#' The function verifies if a valid FIPS code was passed and
+#' converts it to a unified standard for internal use.
+#'
 #' @param fips the state abbreviation or fips code vector
 #' @return States Abbreviations or FIPs as FIP character strings
 #' @examples \donttest{
@@ -11,6 +14,8 @@
 #' converted_fips("nc")
 #'
 #' }
+#'
+#' @return a vector with the State FIPS code
 #'
 #' @export
 converted_fips <- function(fips){

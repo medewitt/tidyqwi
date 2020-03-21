@@ -15,6 +15,8 @@
 #'
 #'}
 #'
+#' @return a data.frame with formatted column names and types
+#'
 #'@export
 #'
 
@@ -40,9 +42,12 @@ add_qwi_labels <- function(df){
 
   labelled::var_label(df) <- labeled_list
 
-  out_data<- dplyr::mutate_at(df,
-                              dplyr::vars(numeric_variables$name),
-                              .funs = as.numeric)
+  target_cols <- unlist(numeric_variables$name)
+
+
+  df[target_cols] <- lapply(df[target_cols], as.numeric)
+
+  out_data <- df
 
   for(i in 1:nrow(numeric_variables)){
 

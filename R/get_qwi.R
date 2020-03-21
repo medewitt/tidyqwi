@@ -1,9 +1,11 @@
-#'@title get_qwi
-#'@description The purpose of this function is to retrive firm information from the
-#'    US Census' Quarterly Workforce Indicator API. These data can be retrieved with by
-#'    specifying the states, the quarters, the years, and additional detail. This function can
-#'    accept multiple states, years and quarters. This makes the data retrieval easier and stay
-#'    inside of the US Census' limits on the API.
+#' Retrieve the Quarterly Workforce Indcator Data
+#'
+#' The purpose of this function is to retrive firm information from the
+#' US Census' Quarterly Workforce Indicator API. These data can be retrieved with by
+#' specifying the states, the quarters, the years, and additional detail. This function can
+#' accept multiple states, years and quarters. This makes the data retrieval easier and stay
+#' inside of the US Census' limits on the API.
+#'
 #'@param years years to fetch (e.g. 2010, or c(2010, 2011))
 #'@param variables the variables you wish to fetch. Default is all.
 #'@param quarters The quarters to fetch (e.g. c(1,2,3,4)) Default is all
@@ -17,7 +19,7 @@
 #'@param apikey your US Census API Key
 #'@param processing the processing strategy (default = "sequential")
 #'
-#'@return the desired data from the US Census's Quaterly Workforce API
+#'@return the desired data from the US Census's Quaterly Workforce API as a tibble
 #'@import jsonlite
 #'@import dplyr
 #'@import httr

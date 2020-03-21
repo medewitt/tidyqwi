@@ -7,13 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Convenient API for Accessing United States Census Bureau's Quarterly Workforce Indicator • tidyqwi</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="A Convenient API for Accessing United States Census Bureau's Quarterly Workforce Indicator">
 <meta property="og:description" content="The purpose of this package is to access the 
-    United States Census Bureau's Quarterly Workforce Indicator data. Additionally, 
+    United States Census Bureaus Quarterly Workforce Indicator data. Additionally, 
     the data will be retrieved in a tidy format for further manipulation with full variable
-    descriptions added if desired. Information about the United States Census Bureau's 
+    descriptions added if desired. Information about the United States Census Bureaus 
     Quarterly Workforce Indicator is available at 
     &lt;https://www.census.gov/data/developers/data-sets/qwi.html&gt;.">
 <meta name="twitter:card" content="summary">
@@ -23,7 +24,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -35,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">tidyqwi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -43,7 +44,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -75,14 +76,10 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-<!-- badges here -->
+      </header><div class="row">
+  <div class="contents col-md-9">
+
 
 <!-- end badges -->
 <div id="tidyqwi" class="section level1">
@@ -94,73 +91,74 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install via CRAN with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"tidyqwi"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"tidyqwi"</span>)</a></code></pre></div>
 <p>Or the development version at:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"medewitt/tidyqwi"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"medewitt/tidyqwi"</span>)</a></code></pre></div>
 </div>
 <div id="use" class="section level2">
 <h2 class="hasAnchor">
 <a href="#use" class="anchor"></a>Use</h2>
 <p>After installation you can load and retrieve the desired data!</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyqwi)</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3">nc_qwi &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_qwi.html">get_qwi</a></span>(<span class="dt">years =</span> <span class="st">"2010"</span>, </a>
-<a class="sourceLine" id="cb3-4" title="4">                  <span class="dt">states =</span> <span class="st">"11"</span>, </a>
-<a class="sourceLine" id="cb3-5" title="5">                  <span class="dt">geography =</span> <span class="st">"county"</span>, </a>
-<a class="sourceLine" id="cb3-6" title="6">                  <span class="dt">apikey =</span>  census_key, </a>
-<a class="sourceLine" id="cb3-7" title="7">                  <span class="dt">endpoint =</span> <span class="st">"rh"</span>,</a>
-<a class="sourceLine" id="cb3-8" title="8">                  <span class="dt">variables =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"sEmp"</span>, <span class="st">"Emp"</span>), <span class="dt">all_groups =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb3-9" title="9">                  <span class="dt">industry_level =</span> <span class="st">"2"</span>, <span class="dt">processing =</span> <span class="st">"multiprocess"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyqwi)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">nc_qwi &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_qwi.html">get_qwi</a></span>(<span class="dt">years =</span> <span class="st">"2010"</span>, </a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">                  <span class="dt">states =</span> <span class="st">"11"</span>, </a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">                  <span class="dt">geography =</span> <span class="st">"county"</span>, </a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">                  <span class="dt">apikey =</span>  census_key, </a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">                  <span class="dt">endpoint =</span> <span class="st">"rh"</span>,</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">                  <span class="dt">variables =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"sEmp"</span>, <span class="st">"Emp"</span>), <span class="dt">all_groups =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">                  <span class="dt">industry_level =</span> <span class="st">"2"</span>, <span class="dt">processing =</span> <span class="st">"multiprocess"</span>)</a></code></pre></div>
 <p>And look at your data:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(nc_qwi)</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; # A tibble: 6 x 12</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt;   year  quarter agegrp sex   ownercode seasonadj industry state county</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; 1 2010  1       A00    0     A00       U         11       37    001   </span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; 2 2010  1       A00    0     A00       U         11       37    003   </span></a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; 3 2010  1       A00    0     A00       U         11       37    005   </span></a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt; 4 2010  1       A00    0     A00       U         11       37    007   </span></a>
-<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt; 5 2010  1       A00    0     A00       U         11       37    009   </span></a>
-<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt; 6 2010  1       A00    0     A00       U         11       37    011   </span></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt; # ... with 3 more variables: Emp &lt;chr&gt;, sEmp &lt;chr&gt;, year_time &lt;date&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(nc_qwi)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; # A tibble: 6 x 12</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;   year  quarter agegrp sex   ownercode seasonadj industry state county</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; </span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 1 2010  1       A00    0     A00       U         11       37    001   </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 2 2010  1       A00    0     A00       U         11       37    003   </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 3 2010  1       A00    0     A00       U         11       37    005   </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 4 2010  1       A00    0     A00       U         11       37    007   </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 5 2010  1       A00    0     A00       U         11       37    009   </span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 6 2010  1       A00    0     A00       U         11       37    011   </span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; # … with 3 more variables: Emp &lt;chr&gt;, sEmp &lt;chr&gt;, year_time &lt;date&gt;</span></a></code></pre></div>
 <p>And there are labels added if desired</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">labelled_nc &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_qwi_labels.html">add_qwi_labels</a></span>(nc_qwi)</a></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">Hmisc<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/Hmisc/topics/describe">describe</a></span>(labelled_nc<span class="op">$</span>Emp)</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="co">#&gt; labelled_nc$Emp : Beginning-of-Quarter Employment: Counts </span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt;        n  missing distinct     Info     Mean      Gmd      .05      .10 </span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt;     7345      411     2851        1     2018     3129       24       40 </span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;      .25      .50      .75      .90      .95 </span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt;      132      448     1550     4355     8099 </span></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; lowest :     0     1     3     4     5, highest: 65243 81884 82723 84038 84674</span></a></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb7-7" title="7"><span class="co">#&gt;     filter, lag</span></a>
-<a class="sourceLine" id="cb7-8" title="8"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb7-9" title="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb7-10" title="10"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
-<a class="sourceLine" id="cb7-11" title="11"></a>
-<a class="sourceLine" id="cb7-12" title="12">labelled_nc <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-13" title="13"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(county <span class="op">==</span><span class="st"> "067"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-14" title="14"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(year_time, Emp, <span class="dt">color =</span> county))<span class="op">+</span></a>
-<a class="sourceLine" id="cb7-15" title="15"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb7-16" title="16"><span class="st">  </span><span class="kw">scale_y_log10</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb7-17" title="17"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>industry)<span class="op">+</span></a>
-<a class="sourceLine" id="cb7-18" title="18"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb7-19" title="19">    <span class="dt">title =</span> <span class="st">"Quarterly Workforce Indicators for Forsyth County"</span>,</a>
-<a class="sourceLine" id="cb7-20" title="20">    <span class="dt">subtitle =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/attributes">attributes</a></span>(labelled_nc<span class="op">$</span>Emp)<span class="op">$</span>label,</a>
-<a class="sourceLine" id="cb7-21" title="21">    <span class="dt">caption =</span> <span class="st">"Data: US Census Bureau QWI"</span>,</a>
-<a class="sourceLine" id="cb7-22" title="22">    <span class="dt">x =</span> <span class="st">"Month"</span></a>
-<a class="sourceLine" id="cb7-23" title="23">  )<span class="op">+</span></a>
-<a class="sourceLine" id="cb7-24" title="24"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">labelled_nc &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_qwi_labels.html">add_qwi_labels</a></span>(nc_qwi)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">Hmisc<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/Hmisc/man/describe.html">describe</a></span>(labelled_nc<span class="op">$</span>Emp)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; labelled_nc$Emp : Beginning-of-Quarter Employment: Counts </span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;        n  missing distinct     Info     Mean      Gmd      .05      .10 </span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;     7345      411     2851        1     2018     3129       24       40 </span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;      .25      .50      .75      .90      .95 </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;      132      448     1550     4355     8099 </span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; lowest :     0     1     3     4     5, highest: 65243 81884 82723 84038 84674</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;     filter, lag</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">labelled_nc <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(county <span class="op">==</span><span class="st"> "067"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(year_time, Emp, <span class="dt">color =</span> county))<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span>industry)<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(</a>
+<a class="sourceLine" id="cb7-19" data-line-number="19">    <span class="dt">title =</span> <span class="st">"Quarterly Workforce Indicators for Forsyth County"</span>,</a>
+<a class="sourceLine" id="cb7-20" data-line-number="20">    <span class="dt">subtitle =</span> <span class="kw"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span>(labelled_nc<span class="op">$</span>Emp)<span class="op">$</span>label,</a>
+<a class="sourceLine" id="cb7-21" data-line-number="21">    <span class="dt">caption =</span> <span class="st">"Data: US Census Bureau QWI"</span>,</a>
+<a class="sourceLine" id="cb7-22" data-line-number="22">    <span class="dt">x =</span> <span class="st">"Month"</span></a>
+<a class="sourceLine" id="cb7-23" data-line-number="23">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-24" data-line-number="24"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>()</a></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="100%"></p>
 <p>Please note that the ‘tidyqwi’ project is released with a <a href="https://github.com/medewitt/tidyqwi/blob/master/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -181,6 +179,12 @@
 </li>
 </ul>
 </div>
+<div class="community">
+<h2>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
 <div class="citation">
 <h2>Citation</h2>
 <ul class="list-unstyled">
@@ -190,17 +194,18 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Michael DeWitt <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8940-1967" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Mona Ahmadiani <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1269-5685" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Adam S. Hyde <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-1205-0032" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
+<li>Michael DeWitt <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8940-1967" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>Mona Ahmadiani <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1269-5685" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>Adam S. Hyde <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-1205-0032" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
 </ul>
 </div>
 
-      <div class="dev-status">
+  <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=tidyqwi"><img src="https://www.r-pkg.org/badges/version/tidyqwi" alt="CRAN status"></a></li>
 <li><a href="https://travis-ci.org/medewitt/tidyqwi"><img src="https://travis-ci.org/medewitt/tidyqwi.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://ci.appveyor.com/project/medewitt/tidyqwi"><img src="https://ci.appveyor.com/api/projects/status/github/medewitt/tidyqwi?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://codecov.io/github/medewitt/tidyqwi?branch=master"><img src="https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></li>
 <li><a href="https://cran.r-project.org/package=tidyqwi"><img src="https://cranlogs.r-pkg.org/badges/tidyqwi"></a></li>
@@ -208,7 +213,6 @@
 </ul>
 </div>
 </div>
-
 </div>
 
 
@@ -217,12 +221,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

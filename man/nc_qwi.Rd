@@ -4,7 +4,9 @@
 \name{nc_qwi}
 \alias{nc_qwi}
 \title{Example Data Set}
-\format{a dataframe with 3244 rows and 44 columns:}
+\format{
+a dataframe with 3244 rows and 44 columns:
+}
 \usage{
 nc_qwi
 }

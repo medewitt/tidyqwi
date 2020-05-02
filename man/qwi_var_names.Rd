@@ -4,7 +4,8 @@
 \name{qwi_var_names}
 \alias{qwi_var_names}
 \title{QWI Variable Names}
-\format{a dataframe with 83 rows and 9 columns:
+\format{
+a dataframe with 83 rows and 9 columns:
 \describe{
   \item{name}{state name}
   \item{label}{state fips code}
@@ -16,7 +17,8 @@
   \item{group}{group level}
   \item{values}{values}
    ...
-}}
+}
+}
 \source{
 \url{https://api.census.gov/data/timeseries/qwi/se/variables.html}
 }

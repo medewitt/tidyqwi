@@ -11,9 +11,12 @@ converted_fips(fips)
 }
 \value{
 States Abbreviations or FIPs as FIP character strings
+
+a vector with the State FIPS code
 }
 \description{
-A function to check if a valid state number or fips is passed
+The function verifies if a valid FIPS code was passed and
+converts it to a unified standard for internal use.
 }
 \examples{
 \donttest{

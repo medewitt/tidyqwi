@@ -1,6 +1,6 @@
 Package: tidyqwi
 Title: A Convenient API for Accessing United States Census Bureau's Quarterly Workforce Indicator
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(
     person(given = "Michael",
            family = "DeWitt",
@@ -26,7 +26,7 @@ Description: The purpose of this package is to access the
     Quarterly Workforce Indicator is available at 
     <https://www.census.gov/data/developers/data-sets/qwi.html>.
 Depends:
-  R (>= 3.0),
+  R (>= 3.2),
   future (>= 1.6.2)
 Imports:
     dplyr,
@@ -44,7 +44,7 @@ License: MIT + file LICENSE
 BugReports: https://github.com/medewitt/tidyqwi/issues
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Suggests: 
     testthat,
     covr,

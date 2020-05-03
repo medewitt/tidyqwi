@@ -1,4 +1,10 @@
 #' A helper function to help parse API calls from the census
+#'
+#' The function verifies that API call was sucessful.
+#' If the call was not sucessful, this function passes the
+#' message received from the US Census API for further troublshooting,
+#'
+#'
 #' @param call a returned call from the US Census API
 #' @import xml2
 #' @import  httr
@@ -14,7 +20,7 @@
 #'check_census_api_call(single_call)
 #'
 #'}
-#'
+#' @return a string vector with the message from the US Census API
 #' @export
 
 

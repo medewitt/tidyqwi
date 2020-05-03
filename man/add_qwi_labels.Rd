@@ -9,6 +9,9 @@ add_qwi_labels(df)
 \arguments{
 \item{df}{an object with a class of `qwi`}
 }
+\value{
+a data.frame with formatted column names and types
+}
 \description{
 This function add labels to a `qwi` object
 }

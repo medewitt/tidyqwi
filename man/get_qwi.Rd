@@ -2,12 +2,22 @@
 % Please edit documentation in R/get_qwi.R
 \name{get_qwi}
 \alias{get_qwi}
-\title{get_qwi}
+\title{Retrieve the Quarterly Workforce Indcator Data}
 \usage{
-get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
-  industry_level = 2, states, endpoint = "sa", all_groups = TRUE,
-  owner_code = TRUE, geography = "cbsa", seasonadj = "U",
-  apikey = NULL, processing = "sequential")
+get_qwi(
+  years,
+  variables = NULL,
+  quarters = c(1, 2, 3, 4),
+  industry_level = 2,
+  states,
+  endpoint = "sa",
+  all_groups = TRUE,
+  owner_code = TRUE,
+  geography = "cbsa",
+  seasonadj = "U",
+  apikey = NULL,
+  processing = "sequential"
+)
 }
 \arguments{
 \item{years}{years to fetch (e.g. 2010, or c(2010, 2011))}
@@ -35,14 +45,14 @@ get_qwi(years, variables = NULL, quarters = c(1, 2, 3, 4),
 \item{processing}{the processing strategy (default = "sequential")}
 }
 \value{
-the desired data from the US Census's Quaterly Workforce API
+the desired data from the US Census's Quaterly Workforce API as a tibble
 }
 \description{
 The purpose of this function is to retrive firm information from the
-   US Census' Quarterly Workforce Indicator API. These data can be retrieved with by
-   specifying the states, the quarters, the years, and additional detail. This function can
-   accept multiple states, years and quarters. This makes the data retrieval easier and stay
-   inside of the US Census' limits on the API.
+US Census' Quarterly Workforce Indicator API. These data can be retrieved with by
+specifying the states, the quarters, the years, and additional detail. This function can
+accept multiple states, years and quarters. This makes the data retrieval easier and stay
+inside of the US Census' limits on the API.
 }
 \examples{
 \dontrun{

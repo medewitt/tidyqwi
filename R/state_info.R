@@ -6,6 +6,6 @@
 #'   \item{state_abbreviation}{state abbreviation}
 #'    ...
 #' }
-#' @source \url{https://www.census.gov/geo/reference/ansi_statetables.html}
+#' @source \url{https://www.census.gov/library/reference/code-lists/ansi.html}
 
 "state_info"

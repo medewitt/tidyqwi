@@ -2,6 +2,8 @@
 
 * Internal changes in preparation for `dplyr` v1.0.0
 * Some additional descriptions in function documentation
+* Updated broken links
+* Now depends on R>=3.2 due to dependencies
 
 # tidyqwi 0.1.1
 

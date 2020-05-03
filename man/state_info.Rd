@@ -14,7 +14,7 @@ a dataframe with 51 rows and 3 columns:
 }
 }
 \source{
-\url{https://www.census.gov/geo/reference/ansi_statetables.html}
+\url{https://www.census.gov/library/reference/code-lists/ansi.html}
 }
 \usage{
 state_info

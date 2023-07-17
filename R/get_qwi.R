@@ -203,13 +203,23 @@ get_qwi <- function(years,
                           A02 = "&ownercode=A02")
   }
 
-  if(!geography %in% c("cbsa", "county")){
+  if(!geography %in% c("cbsa", "county", "wia")){
     stop("Please enter a county or cbsa in the `geography` field")
   }
 
   if(geography == "cbsa"){
     geography <- "metropolitan+statistical+area/micropolitan+statistical+area"
-  } else{
+  }
+  if(geography == "wia"){
+    geography <- "workforce+investment+area"
+    wia_codes <- geo_codes %>%
+      filter(geo_level == "W") %>%
+      mutate(state_fips = substr(geography, start = 1, stop = 2),
+             geography = substr(geography, start = 3, stop = nchar(geography))
+             ) %>%
+      filter(state_fips %in% states) %>%
+      pull(geography)
+    }else{
     geography <- geography
   }
 
@@ -229,15 +239,16 @@ get_qwi <- function(years,
                           industries,
                           states) %>%
     dplyr::mutate(url = paste(
-      "https://api.census.gov/data/timeseries/qwi/",endpoint_to_retrieve,"?get=",
+      "https://api.census.gov/data/timeseries/qwi/", endpoint_to_retrieve, "?get=",
       variables,
-      "&for=",geography,":*&in=state:",
-      states,
-      "&year=",year_collapsed,
-      "&quarter=",quarter_collapsed,
+      "&for=", geography, ifelse(geography == "county" | geography == "state", ":*", ""),
+      ifelse(geography == "wia", paste0(":",paste0(wia_codes, collapse=","))),
+      "&in=state:", states,
+      "&year=", year_collapsed,
+      "&quarter=", quarter_collapsed,
       cross_tab,
       owner_code,
-      "&seasonadj=",seasonadj,
+      "&seasonadj=", seasonadj,
       "&industry=",
       industries,
       "&key=",

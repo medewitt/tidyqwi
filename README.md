@@ -1,19 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- badges here -->
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/tidyqwi)](https://cran.r-project.org/package=tidyqwi)
 [![R build
 status](https://github.com/medewitt/tidyqwi/workflows/R-CMD-check/badge.svg)](https://github.com/medewitt/tidyqwi/actions)
-[![Travis build
-status](https://travis-ci.org/medewitt/tidyqwi.svg?branch=master)](https://travis-ci.org/medewitt/tidyqwi)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/medewitt/tidyqwi?branch=master&svg=true)](https://ci.appveyor.com/project/medewitt/tidyqwi)[![Coverage
-status](https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg)](https://codecov.io/github/medewitt/tidyqwi?branch=master)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![](https://cranlogs.r-pkg.org/badges/tidyqwi)](https://cran.r-project.org/package=tidyqwi)[![DOI](http://joss.theoj.org/papers/10.21105/joss.01462/status.svg)](https://doi.org/10.21105/joss.01462)
 
 <!-- end badges -->
 
@@ -26,8 +18,6 @@ some of the additional parameters (desired cross tabs, MSA vs county
 level data, firm size, etc) and submit them to the US Census API. This
 package then stays within the US Census guidelines for API submission
 for this data and returns a combined tidy dataframe for future analysis.
-
-This is a work in progress\!
 
 ## Installation
 
@@ -45,7 +35,7 @@ remotes::install_github("medewitt/tidyqwi")
 
 ## Use
 
-After installation you can load and retrieve the desired data\!
+After installation you can load and retrieve the desired data!
 
 ``` r
 library(tidyqwi)
@@ -63,16 +53,15 @@ And look at your data:
 
 ``` r
 head(nc_qwi)
-#> # A tibble: 6 x 12
-#>   year  quarter agegrp sex   ownercode seasonadj industry state county Emp  
-#>   <chr> <chr>   <chr>  <chr> <chr>     <chr>     <chr>    <chr> <chr>  <chr>
-#> 1 2010  1       A00    0     A00       U         11       37    001    45   
-#> 2 2010  1       A00    0     A00       U         11       37    003    101  
-#> 3 2010  1       A00    0     A00       U         11       37    005    82   
-#> 4 2010  1       A00    0     A00       U         11       37    007    207  
-#> 5 2010  1       A00    0     A00       U         11       37    009    104  
-#> 6 2010  1       A00    0     A00       U         11       37    011    77   
-#> # … with 2 more variables: sEmp <chr>, year_time <date>
+#> # A tibble: 6 × 12
+#>   year  quarter agegrp sex   ownercode seasonadj industry state county Emp   sEmp  year_time 
+#>   <chr> <chr>   <chr>  <chr> <chr>     <chr>     <chr>    <chr> <chr>  <chr> <chr> <date>    
+#> 1 2010  1       A00    0     A00       U         11       37    001    45    1     2010-01-01
+#> 2 2010  1       A00    0     A00       U         11       37    003    101   1     2010-01-01
+#> 3 2010  1       A00    0     A00       U         11       37    005    82    1     2010-01-01
+#> 4 2010  1       A00    0     A00       U         11       37    007    207   1     2010-01-01
+#> 5 2010  1       A00    0     A00       U         11       37    009    104   1     2010-01-01
+#> 6 2010  1       A00    0     A00       U         11       37    011    77    1     2010-01-01
 ```
 
 And there are labels added if desired
@@ -84,10 +73,8 @@ labelled_nc <- add_qwi_labels(nc_qwi)
 ``` r
 Hmisc::describe(labelled_nc$Emp)
 #> labelled_nc$Emp : Beginning-of-Quarter Employment: Counts 
-#>        n  missing distinct     Info     Mean      Gmd      .05      .10 
-#>     7345      411     2851        1     2018     3129       24       40 
-#>      .25      .50      .75      .90      .95 
-#>      132      448     1550     4355     8099 
+#>        n  missing distinct     Info     Mean      Gmd      .05      .10      .25      .50      .75      .90      .95 
+#>     7345      411     2851        1     2018     3129       24       40      132      448     1550     4355     8099 
 #> 
 #> lowest :     0     1     3     4     5, highest: 65243 81884 82723 84038 84674
 ```
@@ -118,11 +105,12 @@ labelled_nc %>%
     x = "Month"
   )+
   theme_minimal()
+#> Warning in vp$just: partial match of 'just' to 'justification'
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 Please note that the ‘tidyqwi’ project is released with a [Contributor
 Code of
-Conduct](https://github.com/medewitt/tidyqwi/blob/master/CODE_OF_CONDUCT.md).
+Conduct](https://github.com/medewitt/tidyqwi/blob/main/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.

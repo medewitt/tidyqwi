@@ -9,7 +9,7 @@ bibentry(
   volume   = "4",
   number   = "38",
   pages    = "1462",
-  url      = "http://joss.theoj.org/papers/10.21105/joss.01462",
+  url      = "https://joss.theoj.org/papers/10.21105/joss.01462",
   textVersion = paste("DeWitt et al., (2019).",
                       "tidyqwi: A Tidy Approach to Accessing The US Census Bureau's Quarterly Workforce Indicators.",
                       "Journal of Open Source Software, 4(38), 1462,",

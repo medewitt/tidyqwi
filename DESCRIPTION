@@ -26,7 +26,7 @@ Description: The purpose of this package is to access the
     Quarterly Workforce Indicator is available at 
     <https://www.census.gov/data/developers/data-sets/qwi.html>.
 Depends:
-  R (>= 3.2),
+  R (>= 3.5),
   future (>= 1.6.2)
 Imports:
     dplyr,

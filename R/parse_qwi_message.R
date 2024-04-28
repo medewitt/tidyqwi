@@ -7,7 +7,7 @@ parse_qwi_message <- function(x) {
   if (class(x) != "response") {
     stop("You have not passed a valid response")
   }
-  y <- dplyr::as_data_frame(
+  y <- dplyr::as_tibble(
     jsonlite::fromJSON(
       httr::content(x, as = "text", encoding = "UTF-8")
       )

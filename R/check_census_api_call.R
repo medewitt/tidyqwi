@@ -8,31 +8,47 @@
 #' @param call a returned call from the US Census API
 #' @import xml2
 #' @import  httr
-#'@examples \donttest{
+#'@examples
+#' 
+#' if(FALSE){
 #'library(tidyqwi)
 #'library(httr)
 #' # A single call to the API without an API Key
 #'url <- "api.census.gov/data/timeseries/qwi/sa?get=Emp&for=county:198&key=NOKEY"
 #'single_call <- httr::GET(url)
+#' stop_for_status(single_call)
 #'
 #'# Because a non valid API key was specified an message will be returned
 #'
-#'check_census_api_call(single_call)
-#'
+#' check_census_api_call(single_call)
 #'}
+#'
 #' @return a string vector with the message from the US Census API
 #' @export
 
 
 check_census_api_call <- function(call){
 
+
+
   if(class(call) != "response"){
     stop("A valid response was not returned")
   }
+  if( grepl("Invalid", call %>%
+    httr::content(encoding = "UTF-8") %>%
+    xml2::as_xml_document()%>%
+    xml2::xml_find_all("head") %>%
+    xml2::xml_text())) {
+        
+      stop("A valid key must be included with each data API request.")
+    }
 
   returned_call <- httr::content(call, as = "text", encoding = "UTF-8")
 
-  if( show_condition(xml2::as_xml_document(returned_call)["node"]) !="error"){
+  
+
+
+  if( class(show_condition(xml2::as_xml_document(returned_call)["node"])) !="error"){
     returned_call %>%
       xml2::as_xml_document()%>%
       xml2::xml_find_all("body") %>%

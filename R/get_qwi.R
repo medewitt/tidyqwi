@@ -175,7 +175,7 @@ get_qwi <- function(years,
 
 
   if(!endpoint %in% c("sa", "se", "rh")){
-    stop(sprintf("You have not specified a valid endpoint one of `sa``, `se``, or `rh`", endpoint))
+    stop(sprintf("You have not specified a valid endpoint one of `sa``, `se``, or `rh`"))
   }
 
   endpoint_to_retrieve <- switch( endpoint,
@@ -263,11 +263,11 @@ get_qwi <- function(years,
   call <- httr::GET(urls$url[[1]])
 
 
-  if(!substr(call$status_code,1,1) == "2"|
-     show_condition(check_census_api_call(call))!="error"){
+  if(!substr(call$status_code, 1, 1) == "2" ||
+     class(show_condition(check_census_api_call(call)))!="error") {
     # IF 200 was not returned then there was an error.
 
-    if(grepl(pattern = "valid key must", check_census_api_call(call))){
+    if(grepl(pattern = "valid key must", check_census_api_call(call))) {
       stop(check_census_api_call(call))
     }
   }
@@ -276,7 +276,7 @@ get_qwi <- function(years,
 
   #results <- purrr::map(urls$url, httr::GET)
   results <- vector("list", length = nrow(urls))
-  for(i in 1:nrow(urls)){
+  for(i in 1:nrow(urls)) {
     results[[i]] <- httr::GET(urls$url[[i]])
     #print(paste0(i, "out of", nrow(urls)))
   }
@@ -292,7 +292,7 @@ get_qwi <- function(years,
 
   a<- purrr::transpose(output)[["result"]]
 
-  non_error_returns <- tidyr::spread_(
+  non_error_returns <- tidyr::spread(
     dplyr::bind_rows(
       purrr::compact(a)),
     "parameter", "value", fill = NA)

@@ -18,16 +18,18 @@ If the call was not sucessful, this function passes the
 message received from the US Census API for further troublshooting,
 }
 \examples{
-\donttest{
+
+if(FALSE){
 library(tidyqwi)
 library(httr)
 # A single call to the API without an API Key
 url <- "api.census.gov/data/timeseries/qwi/sa?get=Emp&for=county:198&key=NOKEY"
 single_call <- httr::GET(url)
+stop_for_status(single_call)
 
 # Because a non valid API key was specified an message will be returned
 
 check_census_api_call(single_call)
-
 }
+
 }

@@ -1,3 +1,8 @@
+# tidyqwu 0.1.3
+* Adds capability for pulling workforce investment areas via @mrembart via PR #31.
+* Internal changes due to changes in `tidyr` and `dplyr`
+* Misc internal upkeep regarding Census API
+
 # tidyqwi 0.1.2
 
 * Internal changes in preparation for `dplyr` v1.0.0

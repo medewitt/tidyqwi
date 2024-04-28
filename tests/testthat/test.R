@@ -26,7 +26,7 @@ test_that("Catch for correct variables", {
 })
 
 test_that("Catch for endpoint checking", {
-  expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "MYKEY", endpoint = "RR"),
+  expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "MYKEY", endpoint = "RR", variables = "EarnBeg"),
                "You have not specified a valid endpoint one of `sa``, `se``, or `rh`")
 })
 
@@ -44,7 +44,7 @@ test_that("Catch for seasonal adjustment", {
 test_that("Valid API Key", {
   skip_on_cran()
   expect_error(get_qwi(years = c(2011), states = c("01"), apikey = "A"),
-               "A valid key must be included with each data API request. You included a key with this request, however, it is not valid. Please check your key and try again.If you do not have a key you my sign up for one here. ")
+               "A valid key must be included with each data API request.")
 })
 
 # check that labels fails

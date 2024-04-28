@@ -5,6 +5,7 @@
   utils::data("owner_codes", package=pkgname, envir=parent.env(environment()))
   utils::data("qwi_var_names", package=pkgname, envir=parent.env(environment()))
   utils::data("state_info", package=pkgname, envir=parent.env(environment()))
+  utils::data("geo_codes", package=pkgname, envir=parent.env(environment()))
 }
 
 # Helper for trycatching in the code
@@ -21,3 +22,6 @@ show_condition <- function(code) {
 
 
 
+globalVariables({
+  c("geo_codes", "geo_level", "state_fips")
+})

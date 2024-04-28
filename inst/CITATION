@@ -1,6 +1,4 @@
-citHeader("To cite tidyqwi in publications use:")
-
-citEntry(
+bibentry(
   entry    = "Article",
   title    = "tidyqwi: A Tidy Approach to Accessing The US Census Bureau’s Quarterly Workforce Indicators",
   author   = c(person("Michael E.", "DeWitt"),

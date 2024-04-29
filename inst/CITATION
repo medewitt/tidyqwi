@@ -1,5 +1,5 @@
 bibentry(
-  entry    = "Article",
+  bibtype    = "Article",
   title    = "tidyqwi: A Tidy Approach to Accessing The US Census Bureau’s Quarterly Workforce Indicators",
   author   = c(person("Michael E.", "DeWitt"),
                person("Mona", "Ahmadiani"),
@@ -17,3 +17,4 @@ bibentry(
 
   )
 )
+

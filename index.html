@@ -84,7 +84,6 @@
 <div class="page-header"><h1 id="tidyqwi">tidyqwi<a class="anchor" aria-label="anchor" href="#tidyqwi"></a>
 </h1></div>
 <p>The goal of <code>tidyqwi</code> is to make accessing the US Census Bureau’s <em>Quarterly Workforce Indicators</em> easier in a tidy format. This package allows a user to specify the years and states of interest as well as some of the additional parameters (desired cross tabs, MSA vs county level data, firm size, etc) and submit them to the US Census API. This package then stays within the US Census guidelines for API submission for this data and returns a combined tidy dataframe for future analysis.</p>
-<p>This is a work in progress!</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -112,26 +111,23 @@
 <p>And look at your data:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">nc_qwi</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 x 12</span></span>
-<span><span class="co">#&gt;   year  quarter agegrp sex   ownercode seasonadj industry state county Emp  </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 2010  1       A00    0     A00       U         11       37    001    45   </span></span>
-<span><span class="co">#&gt; 2 2010  1       A00    0     A00       U         11       37    003    101  </span></span>
-<span><span class="co">#&gt; 3 2010  1       A00    0     A00       U         11       37    005    82   </span></span>
-<span><span class="co">#&gt; 4 2010  1       A00    0     A00       U         11       37    007    207  </span></span>
-<span><span class="co">#&gt; 5 2010  1       A00    0     A00       U         11       37    009    104  </span></span>
-<span><span class="co">#&gt; 6 2010  1       A00    0     A00       U         11       37    011    77   </span></span>
-<span><span class="co">#&gt; # … with 2 more variables: sEmp &lt;chr&gt;, year_time &lt;date&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 6 × 12</span></span>
+<span><span class="co">#&gt;   year  quarter agegrp sex   ownercode seasonadj industry state county Emp   sEmp  year_time </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;date&gt;    </span></span>
+<span><span class="co">#&gt; 1 2010  1       A00    0     A00       U         11       37    001    45    1     2010-01-01</span></span>
+<span><span class="co">#&gt; 2 2010  1       A00    0     A00       U         11       37    003    101   1     2010-01-01</span></span>
+<span><span class="co">#&gt; 3 2010  1       A00    0     A00       U         11       37    005    82    1     2010-01-01</span></span>
+<span><span class="co">#&gt; 4 2010  1       A00    0     A00       U         11       37    007    207   1     2010-01-01</span></span>
+<span><span class="co">#&gt; 5 2010  1       A00    0     A00       U         11       37    009    104   1     2010-01-01</span></span>
+<span><span class="co">#&gt; 6 2010  1       A00    0     A00       U         11       37    011    77    1     2010-01-01</span></span></code></pre></div>
 <p>And there are labels added if desired</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">labelled_nc</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/add_qwi_labels.html">add_qwi_labels</a></span><span class="op">(</span><span class="va">nc_qwi</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">Hmisc</span><span class="fu">::</span><span class="fu">describe</span><span class="op">(</span><span class="va">labelled_nc</span><span class="op">$</span><span class="va">Emp</span><span class="op">)</span></span>
 <span><span class="co">#&gt; labelled_nc$Emp : Beginning-of-Quarter Employment: Counts </span></span>
-<span><span class="co">#&gt;        n  missing distinct     Info     Mean      Gmd      .05      .10 </span></span>
-<span><span class="co">#&gt;     7345      411     2851        1     2018     3129       24       40 </span></span>
-<span><span class="co">#&gt;      .25      .50      .75      .90      .95 </span></span>
-<span><span class="co">#&gt;      132      448     1550     4355     8099 </span></span>
+<span><span class="co">#&gt;        n  missing distinct     Info     Mean      Gmd      .05      .10      .25      .50      .75      .90      .95 </span></span>
+<span><span class="co">#&gt;     7345      411     2851        1     2018     3129       24       40      132      448     1550     4355     8099 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; lowest :     0     1     3     4     5, highest: 65243 81884 82723 84038 84674</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -159,9 +155,10 @@
 <span>    caption <span class="op">=</span> <span class="st">"Data: US Census Bureau QWI"</span>,</span>
 <span>    x <span class="op">=</span> <span class="st">"Month"</span></span>
 <span>  <span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in vp$just: partial match of 'just' to 'justification'</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="100%"></p>
-<p>Please note that the ‘tidyqwi’ project is released with a <a href="https://github.com/medewitt/tidyqwi/blob/master/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the ‘tidyqwi’ project is released with a <a href="https://github.com/medewitt/tidyqwi/blob/main/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
 
@@ -214,12 +211,6 @@
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=tidyqwi" class="external-link"><img src="https://www.r-pkg.org/badges/version/tidyqwi" alt="CRAN status"></a></li>
 <li><a href="https://github.com/medewitt/tidyqwi/actions" class="external-link"><img src="https://github.com/medewitt/tidyqwi/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://travis-ci.org/medewitt/tidyqwi" class="external-link"><img src="https://travis-ci.org/medewitt/tidyqwi.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://ci.appveyor.com/project/medewitt/tidyqwi" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/medewitt/tidyqwi?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
-<li><a href="https://codecov.io/github/medewitt/tidyqwi?branch=master" class="external-link"><img src="https://codecov.io/gh/medewitt/tidyqwi/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></li>
-<li><a href="https://cran.r-project.org/package=tidyqwi" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/tidyqwi"></a></li>
-<li><a href="https://doi.org/10.21105/joss.01462" class="external-link"><img src="http://joss.theoj.org/papers/10.21105/joss.01462/status.svg" alt="DOI"></a></li>
 </ul>
 </div>
 
